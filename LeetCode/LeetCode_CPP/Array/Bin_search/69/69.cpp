@@ -7,10 +7,14 @@ class Solution
     public:
         int MySqrt(int x)
         {
+            if(x == 1){
+                return 1; 
+            }
+
             // 使用二分法: 使用左闭右闭区间, x 相当于target, 但比较大小的时候是 x 与 mid * mid 比较
             int max = x;
             int min = 0;
-            
+
             while(min <= max){
                 int mid = min + (max - min) / 2;
                 if(x / mid < mid){      // x < mid * mid
@@ -38,6 +42,12 @@ int main(void)
     cout << "x = " << x << " | " << "sqrt(x) = " << s.MySqrt(x) << endl;
 
     x = 9;
+    cout << "x = " << x << " | " << "sqrt(x) = " << s.MySqrt(x) << endl;
+
+    x = 1;
+    cout << "x = " << x << " | " << "sqrt(x) = " << s.MySqrt(x) << endl;
+
+    x = 0;
     cout << "x = " << x << " | " << "sqrt(x) = " << s.MySqrt(x) << endl;
 
     x = pow(2,31) -1;
