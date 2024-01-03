@@ -4,7 +4,7 @@ using namespace std;
 class Solution
 {
     public:
-        void moveZeros(vector<int> &nums)
+        void moveZeros1(vector<int> &nums)
         {
             if(nums.size() <=1){
                 return;
@@ -33,6 +33,19 @@ class Solution
                 }
             }
         }
+
+        void moveZeros2(vector<int> &nums)      // 简洁写法, 但是元素操作的 次数 相对写法1来说比较多. 每个元素至多遍历两次
+        {
+            int slow = 0;
+            int fast = 0;
+            while(fast < nums.size()){
+                if(nums[fast] != 0){            // 只要fast指向的元素不是零, 就交换
+                    swap(nums[slow], nums[fast]);
+                    slow++;
+                }
+                fast++;
+            }
+        }
 };
 
 int main(void)
@@ -44,7 +57,7 @@ int main(void)
     // vector<int> nums = {1,1};
 
 
-    s.moveZeros(nums);
+    s.moveZeros2(nums);
 
     cout << "results: ";
     for(size_t i = 0; i < nums.size(); i++){
