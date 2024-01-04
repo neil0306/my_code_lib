@@ -6,9 +6,6 @@ class Solution
     public:
         string minWindow(string s, string t) 
         {
-            // int n = s.length();
-            // int m = t.length();
-            // int left = 0, right = 0;
             int cnt = 0;                            // 统计有效字符(t里包含的字符)
             int minLength = INT_MAX;
             string res = "";
@@ -35,29 +32,17 @@ class Solution
                         win_hash[s[left]] --;
                         left++;
                     }
-                }
 
-                // 判断当前窗口内字符是否更短
-                if(right - left + 1 < minLength){
-                    res = s.substr(left, right - left + 1);
-                    minLength = res.size();
+                    // 判断当前窗口内字符是否更短
+                    if(right - left + 1 < minLength){
+                        res = s.substr(left, right - left + 1);
+                        minLength = res.size();
+                    }
                 }
             }
-            // while(right < n){
-            //     window[s[right++]]++;   // 放入遍历的元素, 移动右边界
 
-            //     // 判断是否需要处理左边界
-            //     char temp = s[left];
-            //     while(t_hash[temp] > 0 && window[temp] > t_hash[temp]){
-            //         window[temp]--;
-            //         temp = s[left++];
-            //     }
-
-            //     res = res.length() > (s[]
-            // }
-        return res;
+            return res;
         }
-        
 };
 
 int main(void)
