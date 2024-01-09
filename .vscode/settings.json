@@ -5,6 +5,7 @@
         "vector": "cpp",
         "string": "cpp",
         "limits": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "__split_buffer": "cpp"
     }
 }
