@@ -7,6 +7,7 @@
         "limits": "cpp",
         "algorithm": "cpp",
         "__split_buffer": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "unordered_map": "cpp"
     }
 }
