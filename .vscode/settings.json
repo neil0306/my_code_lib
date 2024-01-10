@@ -6,6 +6,7 @@
         "string": "cpp",
         "limits": "cpp",
         "algorithm": "cpp",
-        "__split_buffer": "cpp"
+        "__split_buffer": "cpp",
+        "ios": "cpp"
     }
 }
