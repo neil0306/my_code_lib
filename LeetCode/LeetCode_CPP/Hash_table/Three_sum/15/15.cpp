@@ -59,6 +59,51 @@ class Solution
             }
             return res;
         }
+
+        // 优化版:
+        vector<vector<int>> threeSum_opt(vector<int> &nums) 
+        {
+            sort(nums.begin(), nums.end());
+
+            // 额外优化: 如果最小的元素都大于0, 就直接结束.
+            if(nums[0] > 0){
+                return {};
+            }
+
+            vector<vector<int>> ans;
+            int n = nums.size();
+            for (int i = 0; i < n - 2; ++i) {
+                // ----------- 处理 第一个元素 ------
+                int x = nums[i];
+
+                // 跳过重复数字
+                if (i > 0 && x == nums[i - 1])
+                    continue;
+
+                // 优化一: 如果当前位置和待处理的最小的两个数加起来大于0, 则一定不满足条件, 直接结束
+                if (x + nums[i + 1] + nums[i + 2] > 0) 
+                    break;
+                
+                // 优化二: 如果当前数字和最后两个数子加起来不满足条件, 则继续遍历下一个元素, 以增大求和
+                if (x + nums[n - 2] + nums[n - 1] < 0)
+                    continue;
+                
+                // ------- 处理第二, 第三个元素 --------
+                int left = i + 1, right = n - 1;
+                while (left < right) {
+                    int s = x + nums[left] + nums[right];
+                    if (s > 0) --right;
+                    else if (s < 0) ++left;
+                    else {
+                        ans.push_back({x, nums[left], nums[right]});
+                        for (++left; left < right && nums[left] == nums[left - 1]; ++left); // 跳过重复数字
+                        for (--right; right > left && nums[right] == nums[right + 1]; --right); // 跳过重复数字
+                    }
+                }
+            }
+            return ans;
+        }
+
 };
 
 int main(void)

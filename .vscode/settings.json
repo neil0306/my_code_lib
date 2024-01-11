@@ -8,6 +8,12 @@
         "algorithm": "cpp",
         "__split_buffer": "cpp",
         "ios": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "__hash_table": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp",
+        "unordered_set": "cpp"
     }
 }
