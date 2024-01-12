@@ -4,11 +4,11 @@ using namespace std;
 class Solution
 {
     public:
-        string right_turn_str(string & s, int k)
+        string right_turn_str(string s, int k)
         {
-            reverse_str(s, 0, s.size()-1);
-            reverse_str(s, 0, k-1);
-            reverse_str(s, k, s.size()-1);
+            reverse_str(s, 0, s.size()-1);      // 先整体翻转
+            reverse_str(s, 0, k-1);             // 反转[0,k-1]
+            reverse_str(s, k, s.size()-1);      // 反转[k,s.size()-1]
             return s;
         }
 
@@ -18,6 +18,14 @@ class Solution
                 swap(s[i], s[j]);
             }
         }
+
+        string left_turn_str(string s, int k)
+        {
+            reverse_str(s, 0, k-1);        // 反转[0,k-1]
+            reverse_str(s, k, s.size()-1); // 反转[k,s.size()-1]
+            reverse_str(s, 0, s.size()-1); // 反转整个字符串
+            return s;
+        }
 };
 
 int main(void)
@@ -26,9 +34,10 @@ int main(void)
     string s;
     Solution ans;
 
-    s = "abcdefg", k = 2;
     s = "a", k = 1;
-    cout << ans.right_turn_str(s,k) << endl;
+    s = "abcdefg", k = 2;
+    cout << ans.right_turn_str(s,k) << endl;        // fgabcde
+    cout << ans.left_turn_str(s,k) << endl;         // cdefgab
 
     return 0;
 }
