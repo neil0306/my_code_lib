@@ -42,10 +42,10 @@
 - 包含最后一个字母, 但**不包含首字母**的所有子串的结合.
 ```txt
 对于子串 aabaaf 来说, 它的后缀有: 
-  a,
-  ab,
-  aba,
-  abaa,
+  f,
+  af,
+  aaf,
+  baaf,
   abaaf
 
   注意这里的后缀字母候选区域是 [1,5], 去掉了第一个字母, 字母顺序依旧是 "从左到右".
@@ -151,19 +151,19 @@
         ```txt
         子串 aab: 
           前缀有: a, aa
-          后缀有: a, ab
+          后缀有: b, ab
 
         子串 aaba:
           前缀有: a, aa, aab
-          后缀有: a, ab, aba
+          后缀有: a, ba, aba
 
         子串 aabaa:
           前缀有: a, aa, aab, aaba
-          后缀有: a, ab, aba, abaa
+          后缀有: a, aa, baa, abaa
 
         子串 aabaaf:
           前缀有: a, aa, aab, aaba, aabaa
-          后缀有: a, ab, aba, abaa, abaaf
+          后缀有: f, af, aaf, baaf, abaaf
         ```
 
 
