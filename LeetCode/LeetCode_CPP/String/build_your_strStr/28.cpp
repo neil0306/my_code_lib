@@ -41,7 +41,7 @@ class Solution
         {
             // step1 初始化
             int j = 0;      
-            vector<int> Next{0};
+            vector<int> Next(s.length(),0);
 
             // 子串逐渐变长
             for(int i = 1; i < s.size(); ++i){
