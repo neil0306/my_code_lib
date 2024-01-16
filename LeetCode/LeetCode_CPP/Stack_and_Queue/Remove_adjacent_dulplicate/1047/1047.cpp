@@ -30,6 +30,21 @@ public:
         // }
         return res;
     }
+
+    // 直接用 string 模拟栈
+    string removeDuplicates_str(string s) 
+    {
+        string result;
+        for(char tmp_s : s){
+            if(result.empty() || tmp_s != result.back()){       // 字符串末尾作为栈底部
+                result.push_back(tmp_s);    // 入栈
+            }
+            else{
+                result.pop_back();          // 出栈
+            }
+        }
+        return result;
+    }
 };
 
 int main(void)
@@ -39,5 +54,6 @@ int main(void)
 
     s = "abbaca";
     cout << ans.removeDuplicates(s) << endl;
+    cout << ans.removeDuplicates_str(s) << endl;
     return 0;
 }
