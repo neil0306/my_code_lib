@@ -16,6 +16,7 @@
         "string_view": "cpp",
         "unordered_set": "cpp",
         "stack": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "queue": "cpp"
     }
 }
