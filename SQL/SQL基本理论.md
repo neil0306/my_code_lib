@@ -17,7 +17,9 @@ MySQL: 开源的关系型数据库管理系统，使用最广泛的数据库之�
 SQL Server
 Oracle
 
+---
 
+示例中使用的是 `MySQL`，对应的图形界面管理器可以在官网下载 `MySQL Workbench`，也可以使用 `Navicat` 等第三方工具。
 
 
 
