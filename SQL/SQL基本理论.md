@@ -1,3 +1,6 @@
+# 课程视频链接
+- [x] https://www.bilibili.com/video/BV1UE41147KC?p=30&vd_source=7cf7026bc2c23d0b0b88a3094e5ce55a
+
 # 什么是SQL
 SQL（**Structured Query Language**）是一种专门用来与关系型数据库通信的语言。SQL是一种标准的语言，不同的数据库系统都支持SQL，但是不同的数据库系统对SQL的支持程度有所不同。
 - 一般存储的是**表格数据**
