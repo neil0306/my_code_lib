@@ -1,0 +1,15 @@
+## 作者
+
+开源项目C++那些事作者：https://github.com/Light-City/CPlusPlusThings
+
+## 项目
+
+如果你没有项目，或者期望深入学习并发编程可以学习：https://hmpy6adnp5.feishu.cn/docx/BEKBdq0egoxmxNx3X3ZcHzkUnwd
+
+## 模拟面试
+
+如果你想要了解互联网大厂都面试哪些内容或者自己也想要进行一对一模拟面试，可以看看最近跟面试者做的一对一内容。
+
+互联网大厂模拟面试: https://hmpy6adnp5.feishu.cn/docx/OitBdRB4KozIhTxQt7Ec7iFDnkc
+
+C++分布式系统模拟面试:https://hmpy6adnp5.feishu.cn/docx/WZG1dRffuoHkhfxzFlQceDtynrc
