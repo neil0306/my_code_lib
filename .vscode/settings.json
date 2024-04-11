@@ -17,6 +17,7 @@
         "unordered_set": "cpp",
         "stack": "cpp",
         "deque": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "map": "cpp"
     }
 }
