@@ -14,6 +14,7 @@ struct TreeNode
 
 class Solution
 {
+    // 动态规划
     vector<int> robTree(TreeNode * cur)  // 传入当前需要遍历的节点，返回当前层的 DP 数组
     {
         // 递归停止条件
@@ -37,6 +38,34 @@ class Solution
     {
         vector<int> result = robTree(root);
         return max(result[0], result[1]);   // 到根节点的时候返回偷到金钱最多的case
+    }
+
+    // 记忆递归
+    unordered_map<TreeNode *, int> umap;    // key是节点，value存放对于【当前节点处理之后】偷到的最大金钱数
+    int rob(TreeNode * root)
+    {
+        if(root == nullptr)     // 空(子)树
+            return 0;
+        if(root->left == nullptr && root->right == nullptr){  // 子树没有孩子节点
+            return root->val;
+        } 
+        if(umap[root] != 0){
+            return umap[root];
+        }
+
+        // 偷当前节点
+        int val1 = root->val;
+        if(root->left != nullptr){
+            val1 += rob(root->left->left) + rob(root->left->right);
+        }
+        if(root->right != nullptr){
+            val1 += rob(root->right->left) + rob(root->right->right);
+        }
+
+        // 不偷当前节点
+        int val0 = rob(root->left) + rob(root->right);   // 偷左或者右（甚至两个孩子都偷了）
+        umap[root] = max(val0, val1);  // 记录处理完当前节点最多能偷到多少钱
+        return  max(val0, val1);
     }
 };
 
