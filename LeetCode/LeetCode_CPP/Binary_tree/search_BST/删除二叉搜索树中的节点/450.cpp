@@ -20,13 +20,18 @@ public:
         }
         if(root->val == key){ // 找到待删除节点，分情况讨论
             if(root->left == nullptr && root->right == nullptr){  // case2: 叶子节点，删完之后这个位置就是null了
+                delete root;        // 包含了根节点为待删除节点的情况
                 return nullptr;
             }
             else if(root->left == nullptr && root->right != nullptr){ // case3: 只有右孩子非空
-                return root->right;
+                TreeNode * tmp = root->right;
+                delete root;        // 释放内存
+                return tmp;
             }
             else if(root->left != nullptr && root->right == nullptr){ // case4: 只有左孩子非空
-                return root->left;
+                TreeNode * tmp = root->left;
+                delete root;
+                return tmp;
             }
             else{   // case5
                 TreeNode * cur = root->right;

@@ -18,6 +18,7 @@
         "stack": "cpp",
         "deque": "cpp",
         "queue": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "new": "cpp"
     }
 }
