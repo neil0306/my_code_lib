@@ -19,6 +19,7 @@
         "deque": "cpp",
         "queue": "cpp",
         "map": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "__config": "cpp"
     }
 }
