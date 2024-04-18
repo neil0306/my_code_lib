@@ -1,43 +1,50 @@
 #include <iostream>
-#include <stack>
+#include <chrono>
+#include <thread>
 using namespace std;
-
-struct TreeNode
-{
-    int val;
-    TreeNode * left;
-    TreeNode * right;
-    TreeNode(int n) : val(n), left(nullptr), right(nullptr){}
-};
-
-void preOrder(TreeNode* root) 
-{
-    stack<TreeNode*> st;
-    TreeNode* p = root;
-    while (p || !st.empty()) {
-        if (p) {                  // 【左】每次都把left入栈
-            cout << p->val << endl; // 【中】
-            p = p->left;
-            st.push(p);   // st最后入栈了一个空指针
-        } else {                  // 【右】
-            p = st.top(); 
-            st.pop();
-            p = p->right;
-        }
+using namespace chrono;
+// O(n)
+void function1(long long n) {
+    long long k = 0;
+    for (long long i = 0; i < n; i++) {
+        k++;
     }
 }
 
-int main(void)
-{
-    // 创建一个示例树
-    TreeNode* root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
+// O(n^2)
+void function2(long long n) {
+    long long k = 0;
+    for (long long i = 0; i < n; i++) {
+        for (long j = 0; j < n; j++) {
+            k++;
+        }
+    }
 
-    preOrder(root);
-    return 0;
+}
+// O(nlogn)
+void function3(long long n) {
+    long long k = 0;
+    for (long long i = 0; i < n; i++) {
+        for (long long j = 1; j < n; j = j*2) { // 注意这里j=1
+            k++;
+        }
+    }
+}
+int main() {
+    long long n; // 数据规模
+    while (1) {
+        cout << "输入n：";
+        cin >> n;
+        milliseconds start_time = duration_cast<milliseconds >(
+            system_clock::now().time_since_epoch()
+        );
+        // function1(n);        // O(n) 1s内运算次数为 10^8 的数量级
+        function2(n);           // O(n^2) 1s内运算次数 10^4 数量级
+//        function3(n);         // O(nlogn) 1s内运算次数 10^7 数量级
+        milliseconds end_time = duration_cast<milliseconds >(
+            system_clock::now().time_since_epoch()
+        );
+        cout << "耗时:" << milliseconds(end_time).count() - milliseconds(start_time).count()
+            <<" ms"<< endl;
+    }
 }
