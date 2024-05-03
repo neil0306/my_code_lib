@@ -21,5 +21,6 @@
         "map": "cpp",
         "new": "cpp",
         "__config": "cpp"
-    }
+    },
+    "CodeGPT.apiKey": "Groq"
 }
