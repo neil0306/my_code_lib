@@ -474,8 +474,8 @@ class Solution {
   bool hasPathSum(TreeNode* root, int sum) { return dfs(root, sum); }
   bool dfs(TreeNode* root, int sum) {
     if (!root) return false;
-    if (root->left == NULL && root->right == NULL) {
-      if (sum == root->val) return true;
+    if (root->left == NULL && root->right == NULL) {  // 走到叶子节点，判断一下路径和
+      if (sum == root->val) return true;    // sum值在不断递减，每经过一个节点就减小一次。
       return false;
     }
     bool left_res = dfs(root->left, sum - root->val);   // sum - root->val 这里其实隐藏了一个回溯的过程（因为变量是按值传递），进入递归是sum变小了，出递归的时候sum恢复原来的值
