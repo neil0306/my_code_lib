@@ -184,6 +184,7 @@ YOLOv2相比于v1的改进:
     - Mixup: 将两张图片按照一定的比例混合在一起, 使得网络更加robust
     - Cutmix: 将两张图片按照一定的比例混合在一起, 并且将其中一张图片的一部分挖掉, 然后将另一张图片的一部分填充进去
     - Mosaic: 将四张图片按照一定的比例混合在一起, 使得网络更加robust
+    ![](notes_images/yolov4_图片增强示意图.png)
   - 参考博客: https://blog.csdn.net/u011984148/article/details/107572526
 
 
