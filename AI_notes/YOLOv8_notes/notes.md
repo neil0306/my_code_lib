@@ -193,7 +193,7 @@ YOLOv2相比于v1的改进:
 ![](notes_images/YOLOv5_网络结构.png)
 
 Backbone: 
-- 使用Fucus模块, 进行下采样
+- 使用Focus模块, 进行下采样
 - 后面分支分别得到原图的 1/8, 1/16, 1/32 的 feature map, 然后分别接入Neck模块的不同层
 
 Neck:
@@ -259,7 +259,11 @@ Head(YOLOX不一样的地方)
 模块:
 - CB: CB表示`Conv+BN`, 使用不同的大小卷积核的CB模块组成, 底下标注的数字为**卷积核大小**
 - Rep-I: 
-  - Rep表示`重新参数化`, 最早从REPVGG网络中引入. 
+  - Rep表示`重新参数化（re-parameterization）`, 最早从REPVGG网络中引入. 
+    - 重参数化技巧，就是从一个分布 $p_{\theta}(z)$中进行采样，而该分布是带有参数 $\theta$ 的，如果直接进行采样（采样动作是离散的，其`不可微`），是`没有梯度信息`的，那么在BP反向传播的时候就不会对参数梯度进行更新。重参数化技巧可以保证我们从 $p_{\theta}$ 进行采样，同时又能保留梯度信息。
+      - 参考博客：https://zhuanlan.zhihu.com/p/542478018
+    - 如下图是连续随机变量情况下的 re-parameterization trick 示意图
+  ![](notes_images/连续随机变量的重参数化示意图.png)
   - 这里的Rep-I模块使用的 卷积核大小 以及 stride 分别为 (k=1, s=2) 和 (k=3, s=2), 卷积之后相加, 再接一个ReLU
 - Rep-II: 卷积核大小以及stride分别为 (k=1, s=1) 和 (k=3, s=1),  卷积之后相加, 再接一个ReLU
 - Rep-III: 卷积核大小以及stride分别为 (k=1, s=1) 和 (k=3, s=1) 并加上一个BN,  之后相加, 再接一个ReLU
