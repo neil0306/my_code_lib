@@ -1,0 +1,6 @@
+[submodule "mmyolo"]
+	path = mmyolo
+	url = https://github.com/neil0306/mmyolo.git
+[submodule "ultralytics"]
+	path = ultralytics
+	url = https://github.com/neil0306/ultralytics.git
