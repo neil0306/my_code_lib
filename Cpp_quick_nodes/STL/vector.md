@@ -424,6 +424,24 @@ int * const p;   // case 3
 
 解决方案是最好使用标准库提供的算法，如 `std::remove` 和 `std::remove_if` 结合 `vector::erase` 方法来删除元素。这些算法在设计时已经考虑了迭代器失效的问题。
 
+```txt
+std::remove_if
+    将容器中 满足特定条件 的元素 **移动到末尾**, 并返回一个新的结束迭代器, 它并没有真正删除这些元素
+        auto new_end = std::remove_if(vec.begin(), vec.end(), func);   // func 是用来筛选删除元素的函数, func返回true时表示该元素会被删除
+
+std::remove
+    将容器中的 特定 元素 **移动到末尾**, 并返回一个新的结束迭代器, 它并没有真正删除这些元素
+        auto new_end = std::remove(vec.begin(), vec.end(), 3);  // 删除值为3的元素
+
+在使用了 remove 或 remove_if 之后, 要删除这些元素的话, 就使用 vector::erase()
+        vec.erase(new_end, vec.end())
+```
+
+在 C++20 中, 还引入了 `std::erase()`, 它简化了 `std::remove + vector::erase` 的使用:
+```cpp
+    // std::erase 直接删除所有值为3的元素，而不需要先调用 std::remove
+    std::erase(vec, 3);
+```
 
 ## 如果 std::vector 的元素是指针，需要注意什么？
 当 vector 的元素是指针对 std::vector 元素为指针的情况，需要注意以下几点：
