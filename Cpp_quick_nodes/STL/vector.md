@@ -38,7 +38,7 @@
 创建和初始化元素访问
 ```cpp
 #include <iostream>
-#include <evctor>
+#include <vector>
 
 int main()
 {
@@ -75,7 +75,7 @@ C++中的vector的**数组内存**通常是在`堆`上分配的。当创建一�
 
 
 # 实现vector
-vector类中包括：
+vector类中包括以下基本组成部分：
 1. 构造函数（constructor）
 2. 析构函数（destructor，简称 dtor）
 3. 拷贝构造函数
