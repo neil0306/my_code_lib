@@ -412,7 +412,155 @@ print
 size
 ```
 
+## 分析
+### 析构函数
+```cpp
+~List() {
+    clear();
+}
+void clear() {
+    while (head) {
+        // 从头节点开始，依次删除节点
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
 
+    // 更新尾节点指针和链表大小
+    tail = nullptr;
+    size = 0;
+}
+```
+析构函数在销毁链表对象时调用 clear() 方法，删除所有节点，释放内存。clear() 方法简单地从头结点开始清空内存, `清空前需要记录next指针`.
+> 可以用智能指针 `shared_ptr` 来避免显式的空间回收.
+
+### push_back
+```cpp
+void push_back(const T& value) {
+    // 创建新的节点
+    Node* newNode = new Node(value, nullptr, tail);
+
+    if (tail) {
+        // 如果链表非空，将尾节点的 next 指针指向新节点
+        tail->next = newNode;
+    } else {
+        // 如果链表为空，新节点同时也是头节点
+        head = newNode;
+    }
+
+    // 更新尾节点指针和链表大小
+    tail = newNode;
+    ++size;
+}
+```
+在链表的尾部添加一个新的元素, new节点时就设置prev指针为原来的tail, 需要通过tail判断链表是否为空, 如果为空还需要设置head指向新节点, 因为此时第一个链表节点也是最后一个节点, 最后将tail指向新节点.
+> 易错点: 容易忘记判断链表是否为空.
+
+push_front 方法只需要将 tail 和 head 换个位置.
+
+### operator[ ]
+```cpp
+T& operator[](size_t index) {
+    // 从头节点开始遍历链表，找到第 index 个节点
+    Node* current = head;
+    for (size_t i = 0; i < index; ++i) {
+        if (!current) {
+            // 如果 index 超出链表长度，则抛出异常
+            throw std::out_of_range("Index out of range");
+        }
+        current = current->next;
+    }
+
+    // 返回节点中的数据
+    return current->data;
+}
+```
+这个方法就是`[]`的重载, 通过索引访问链表中的元素，返回对应节点的数据引用。逻辑就是从头开始遍历链表, 也很简单, 但需要处理越界的情况.
+
+> 易错点：
+处理越界的情况, 此处的处理是抛出异常。
+需要注意返回的是引用, 否则就不能通过`[]`更新元素.
+
+
+### pop_back
+```cpp
+void pop_back() {
+    if (size > 0) {
+        // 获取尾节点的前一个节点
+        Node* newTail = tail->prev;
+
+        // 删除尾节点
+        delete tail;
+
+        // 更新尾节点指针和链表大小
+        tail = newTail;
+        if (tail) {
+            tail->next = nullptr;
+        } else {
+            head = nullptr;  // 如果链表为空，头节点也置为空
+        }
+
+        --size;
+    }
+}
+```
+删除链表尾部的元素, 删除前需要获取原来尾结点的前一个节点, 将其置为删除后的新tail, 但还需要判断删除后链表是否为空, **为空的话需要将头结点也置为空, 否则head是一个悬垂引用**.
+> 补充知识: 悬垂引用 悬垂引用（Dangling Reference）在C++中指的是一种**指向已经释放或者不再有效内存的引用**。悬垂引用的存在**可能导致未定义行为**，比如程序崩溃、数据损坏或者难以追踪的bug。
+
+> 改进点： 可以考虑使用智能指针 shared_ptr 以避免显式的空间回收.
+
+
+### pop_front
+```cpp
+void pop_front() {
+    if (size > 0) {
+        // 获取头节点的下一个节点
+        Node* newHead = head->next;
+
+        // 删除头节点
+        delete head;
+
+        // 更新头节点指针和链表大小
+        head = newHead;
+        if (head) {
+            head->prev = nullptr;
+        } else {
+            tail = nullptr;  // 如果链表为空，尾节点也置为空
+        }
+
+        --size;
+    }
+}
+```
+删除链表头部的元素。其实就是pop_back的反向逻辑, 只需要将push_back中的tail和head变换位置即可
+
+>易错点：
+>忘记在每次删除节点后更新 head 指针。
+>忘记将 size 重置为0。
+
+
+### 迭代器: begin 和 end
+```cpp
+Node* begin() {
+    return head;
+}
+
+// 使用迭代器遍历链表的结束位置
+Node* end() {
+    return nullptr;
+}
+
+// 使用迭代器遍历链表的开始位置（const版本）
+const Node* begin() const {
+    return head;
+}
+
+// 使用迭代器遍历链表的结束位置（const版本）
+const Node* end() const {
+    return nullptr;
+}
+```
+目前的实现中, 迭代器就是指针, **有const和non const的版本**。`begin()` 返回指向链表第一个元素的指针。`end()` 返回一个**尾后迭代器**，通常是 `nullptr`，表示链表的末尾。
 
 
 
