@@ -1,4 +1,4 @@
-# Mutex: Mutual Exclusion
+# Mutex: Mutual Exclusion (互斥)
 
 ## RACE CONDITION:
 0. Race condition is a situation where two or more threads/process happens to change a common data at the same time.
