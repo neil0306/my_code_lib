@@ -86,9 +86,262 @@ STL 中的 deque (双端队列) 规定了接口和时间复杂度, 但**没有�
   -  取模这一步确保了如果自增后的 backIndex 越界的话, 就会指向数组开始的位置.
 
 
+--- 
+# 实现 deque
+
+```cpp
+#include <iostream>
+#include <stdexcept>
+#include <algorithm>
+#include <sstream>
+#include <string>
+
+template <typename T>
+class Deque
+{
+private:  // 定义内部用于控制状态的成员
+    T* elements;      // 动态数组指针
+    size_t capacity;  // 动态数组总容量
+    size_t size;      // 动态数组中元素的个数
+    size_t frontIndex; // 前端 index
+    size_t backIndex;  // 末尾 index
+
+public:
+    // 构造函数
+    Deque() : elements(nullptr), capacity(0), size(0), frontIndex(0), backIndex(0) {}
+
+    // 析构函数
+    ~Deque()
+    {
+        clear();             // 逐一清空元素, 注意这里不负责释放数组元素指针
+        delete[] elements;   // 释放动态数组指针
+    }
+
+    // 清空 deque 元素, 注意动态数组指针还在
+    void clear()
+    {
+        while(size > 0){
+            pop_front();
+        }
+    }
+
+    // deque 前端插入元素
+    void push_front(const T& value)
+    {
+        // 判断数组是否已满
+        if(size == capacity){
+            resize();           // 扩容 + 搬数据 + 更新所有deque的状态成员
+        }
+
+        // 计算前端 index
+        frontIndex = (frontIndex - 1 + capacity) % capacity; // 加 capacity 后取模, 防止出现负数
+
+        // 放入新元素
+        elements[frontIndex] = value;
+
+        ++size;
+    }
+
+    // deque 末尾插入元素
+    void push_back(T& value)
+    {
+        // 检查容量
+        if(size == capacity){
+            resize();
+        }
+
+        // 先插入新元素 (因为 backIndex 本身就指向能直接插入元素的未使用位置)
+        elements[backIndex] = value;
+
+        // 计算末尾 index
+        backIndex = (backIndex + 1) % capacity;  // 取模, 防止越界
+
+        ++size;
+    }
+
+    // 从 deque 的前端移除元素
+    void pop_front()
+    {
+        // 判断是否为空
+        if(size == 0){
+            throw std::out_of_range("Deque is empty");
+        }
+
+        // 删除元素并不需要释放空间, 只需要修改 index 即可, 后面进来的新元素会覆盖旧的
+        frontIndex = (frontIndex + 1) % capacity;  // 取模, 防止越界
+
+        --size;
+    }
+
+    // 从 deque 末尾移除元素
+    void pop_back()
+    {
+        // 判断是否为空
+        if(size == 0){
+            throw std::out_of_range("Deque is empty");
+        }
+
+        // 删除元素并不需要释放空间, 只需要修改 index 即可, 后面进来的新元素会覆盖旧的
+        backIndex = (backIndex - 1 + capacity) % capacity; // 防止出现负数
+
+        --size;
+    }
+
+    // 随机访问元素
+    T& operator[](int index)
+    {
+        if(index < 0 || index >= size){
+            throw std::out_of_range("Index out of range");
+        }
+        return elements[(frontIndex + index) % capacity];  // 注意取元素得从 frontIndex 开始计算, 取模防止越界
+    }
+
+    // 获取元素数量
+    size_t getSize() const
+    {
+        return size;
+    }
+
+    void printElements() const
+    {
+        size_t index =frontIndex;
+        for(size_t i = 0; i < size; ++i){
+            std::cout << elements[index] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+private:
+    // 调整容量
+    void resize()
+    {
+        // 计算新容量大小
+        size_t newCapacity = (capacity == 0) ? 1 : 2 * capacity;
+
+        // 创建新数组
+        T* newElements = new T[newCapacity];
+
+        // 复制旧元素
+        size_t index = frontIndex;         // index 是旧数组下标
+        for(size_t i = 0; i < size; ++i){  // i 是新数组下标
+            newElements[i] = elements[index];
+            index = (index + 1) % capacity; // 更新 & 防止越界
+        }
+
+        // 释放旧数组
+        delete[] elements;
+
+        elements = newElements; // 更新数组指针
+        capacity = newCapacity; // 更新容量
+        frontIndex = 0;         // 对于新数组而言, 0 就是开头
+        backIndex = size;       // size 刚好指向数组末端有效元素的下一个位置
+    }
+};
+
+```
+
+测试函数:
+```cpp
+int main() {
+        // 创建一个 Deque 对象
+    Deque<int> myDeque;
+
+    int N;
+    std::cin >> N;
+    // 读走回车
+    getchar();
+    std::string line;
+    // 接收命令
+    for (int i = 0; i < N; i++) {
+        std::getline(std::cin, line);
+        std::istringstream iss(line);
+        std::string command;
+        iss >> command;
+        int value;
+
+        if (command == "push_back") {
+            iss >> value;
+            myDeque.push_back(value);
+        }
+
+        if (command == "push_front") {
+            iss >> value;
+            myDeque.push_front(value);
+        }
+
+        if (command == "pop_back") {
+            if (myDeque.getSize() == 0) {
+                continue;
+            }
+            myDeque.pop_back();
+        }
+
+        if (command == "pop_front") {
+            if (myDeque.getSize() == 0) {
+                continue;
+            }
+            myDeque.pop_front();
+        }
+
+        if (command == "clear") {
+            myDeque.clear();
+        }
+
+        if (command == "size") {
+            std::cout << myDeque.getSize() << std::endl;
+        }
+
+        if (command == "get") {
+            iss >> value;
+            std::cout << myDeque[value] << std::endl;
+        }
+
+        if (command == "print") {
+            if (myDeque.getSize() == 0) {
+                std::cout << "empty" << std::endl;
+            } else {
+                myDeque.printElements();
+            }
+        }
+    }
+    return 0;
+}
+```
+
+测试用例:
+```txt
+输入:
+
+15
+push_back 20
+push_back 10
+push_front 30
+push_front 40
+size
+print
+pop_back
+print
+pop_front
+print
+size
+get 1
+clear
+print
+size
 
 
+--- 
+输出:
 
+4
+40 40 40 40 
+40 40 40 
+30 30 
+2
+20
+empty
+0
+```
 
 
 
