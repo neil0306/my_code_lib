@@ -381,7 +381,236 @@ Value *find(const Key &key) {
 
 ---- 
 
+# HashTable 常见的面试题
+
+## 什么是哈希表？它是如何工作的？
+> 哈希表是一种使用哈希函数组织数据，以便快速插入和搜索的数据结构。它通过将键映射到表中的位置来存储键值对。哈希函数将每个键转换为哈希表中的索引，该索引决定了键值对在表中的存储位置。如果两个键映射到同一个索引，就会产生冲突，这通常通过**链表**或**开放寻址法**来解决。
+>> 开放地址法: 直接从冲突位置往后寻找下一个空闲的哈希表索引.
 
 
+## 哈希冲突是什么？如何处理哈希冲突？
+
+> 哈希冲突发生在不同的**键通过哈希函数映射到哈希表的同一位置**时。处理哈希冲突的方法有：
+>> 链表法（分离链接法）：在每个哈希表索引上**维护一个链表**，所有映射到该索引的元素都会被存储在链表中。
+
+>> 开放寻址法：如果发生冲突，就会**寻找下一个空闲的哈希表索引**。
+
+>> 双重哈希：使用**一系列哈希函数**而不是单一哈希函数来确定元素的存储位置。
+
+## 如何选择一个好的哈希函数？
+> 一个好的哈希函数应该满足以下条件：
+>> 快速计算。
+>> 哈希值均匀分布，以减少冲突。
+>> 一致性：相同的输入总是产生相同的输出。 不同的输入应尽可能映射到不同的输出。
+
+## 什么是负载因子？对哈希表有什么影响？
+> 负载因子是哈希表中**已存储元素数量与位置总数的比率**。它是衡量哈希表满程度的指标。
+> 当负载因子过高时，冲突的可能性增加，这会降低哈希表的性能。因此，通常在负载因子达到一定阈值时，哈希表会进行扩容（即重哈希）来增加存储位置，从而减少冲突和维护操作的效率。
+
+## 解释重哈希 (rehashing), 何时以及为什么需要重哈希？
+> 重哈希是在哈希表的**负载因子超过预定的阈值**时，增加哈希表容量并重新分配现有元素的过程。
+> 这个过程需要计算每个元素的新哈希值，并将它们移动到新表中的正确位置。
+> rehash 可以帮助减少冲突和维持操作的快速性能。
+
+## 在哈希表中插入、删除和搜索操作的复杂度是多少？
+> 理想情况下，即没有发生冲突或冲突非常少时，插入、删除和搜索操作的时间复杂度为O(1)。
+> 但是，在最坏的情况下，如果**所有的键都映射到同一索引**，则这些操作的时间复杂度会退化到O(n)，其中n是哈希表中元素的数量。
+> 
+> 使用良好的哈希函数和冲突解决策略可以帮助保持操作的**平均时间复杂度**为接近O(1)。
+
+## 如何解决哈希表的扩容问题？
+> 扩容通常发生在哈希表的负载因子超过预定阈值时。解决方案通常包括：
+
+>> 创建一个更大的哈希表：创建一个容量更大的新哈希表。
+
+>> 重新哈希所有元素：将所有现有的元素重新计算哈希值并插入到新的哈希表中。
+
+>> 逐步迁移：在某些实现中，可以逐步迁移元素到新表，**分摊重哈希的成本到多次插入操作**中。
+
+## 如何确保哈希表的线程安全
+可以使用以下方式的一种来实现哈希表的线程安全:
+- 互斥锁 (mutex)
+    > 使用互斥锁来同步对哈希表的访问。**每次一个线程访问哈希表时，它都需要先获取锁**。
+
+    - 代码实例 - `std::mutex`:
+        ```cpp
+        #include <iostream>
+        #include <unordered_map>
+        #include <mutex>
+
+        template<typename K, typename V>
+        class ThreadSafeHashTable {
+        private:
+            std::unordered_map<K, V> table;
+            std::mutex mtx;  // 互斥锁是定义在整个哈希表里的, 因此整个哈希表使用单个锁来进行保护
+
+        public:
+            void insert(const K& key, const V& value) {
+                std::lock_guard<std::mutex> lock(mtx);  // 先加锁, 再操作
+                table[key] = value;
+            }
+
+            bool get(const K& key, V& value) {
+                std::lock_guard<std::mutex> lock(mtx);  // 先加锁, 再操作
+                auto it = table.find(key);
+                if (it != table.end()) {
+                    value = it->second;
+                    return true;
+                }
+                return false;
+            }
+        };
+        ```
 
 
+- 读写锁 (read-write lock)
+    > 如果 `读操作` 远多于 `写操作`, 使用**读写锁可以提高性能**，因为它允许多个线程同时读取，但`写入时需要排他访问`。
+    - 代码实例 - `std::shared_mutex`
+        ```cpp
+        #include <iostream>
+        #include <unordered_map>
+        #include <shared_mutex>
+
+        template<typename K, typename V>
+        class ThreadSafeHashTable {
+        private:
+            std::unordered_map<K, V> table;
+            std::shared_mutex rw_mtx;
+
+        public:
+            void insert(const K& key, const V& value) {
+                std::unique_lock<std::shared_mutex> lock(rw_mtx);  // 加锁, 由于是写操作, 这里用的是 unique_lock
+                table[key] = value;
+            }
+
+            bool get(const K& key, V& value) {
+                std::shared_lock<std::shared_mutex> lock(rw_mtx);  // 加锁, 由于是可共享的读操作, 用的是 shared_lock
+                auto it = table.find(key);
+                if (it != table.end()) {
+                    value = it->second;
+                    return true;
+                }
+                return false;
+            }
+        };
+        ```
+
+
+- 原子操作 (atomic operation)
+    > 原子操作是**不可中断的操作**，通常用于实现**无锁编程**. 
+    > 对于简单的操作，可以使用原子操作来避免使用锁。
+
+    - 代码实例 - `std::atomic<数据类型>`为每一个 bucket 增加上锁的功能
+        ```cpp
+        #include <iostream>
+        #include <unordered_map>
+        #include <atomic>
+        #include <vector>
+        #include <thread>
+
+        template<typename K, typename V>
+        class ThreadSafeHashTable {
+        private:
+            std::unordered_map<K, V> table;
+            std::vector<std::atomic<int>> locks;   // 用于实现自旋锁的原子变量数组，每个桶（bucket）对应一个原子锁
+
+        public:
+            ThreadSafeHashTable(size_t size) : locks(size) {
+                for (auto& lock : locks) {  
+                    lock.store(0); // 为每个原子锁设置初始值0（表示未上锁）
+                }
+            }
+
+            void insert(const K& key, const V& value) {
+
+                int hash = std::hash<K>{}(key) % locks.size(); 
+                /*
+                    std::hash<K>{} 创建了一个临时对象, 目的只是为了使用它的哈希方法; 
+                    std::hash<K>{}(key) 里的(key) 相当于调用了成员函数里的"()"操作符方法, 也就是用了仿函数的调用方式.
+                */
+                
+                while (locks[hash].exchange(1) == 1); // Spinlock
+                /*
+                exchange(1) 尝试将锁的值设置为1，并返回旧值。
+                如果旧值也是1，则表示锁已被其他线程持有，需要继续自旋等待, 代码的执行流程继续卡在while这一行里.
+                */
+
+                table[key] = value;
+                locks[hash].store(0);  // 释放锁 
+            }
+
+            bool get(const K& key, V& value) {
+                int hash = std::hash<K>{}(key) % locks.size();
+                while (locks[hash].exchange(1) == 1); // Spinlock  (解释同上)
+                auto it = table.find(key);
+                if (it != table.end()) {
+                    value = it->second;
+                    locks[hash].store(0); // 释放这个桶的锁
+                    return true;
+                }
+                locks[hash].store(0);     // 走到这里说明没找到那个key, 也要释放锁
+                return false;
+            }
+        };
+        ```
+
+- 细粒度锁 (fien-grained lock)
+    > 细粒度锁是一种锁的策略，旨在将锁的范围细化到更小的粒度，以提高并发度。
+    > 相对于粗粒度锁 (保护**大块代码**或**多个资源**的锁), **细粒度锁只保护小块代码或单个资源**。例如，如果有多个资源，可以为每个资源分别使用不同的锁，而不是使用一个大锁保护所有资源。 
+    >> 不是对整个哈希表加锁，而是对哈希表的一部分（例如单个桶或链表）加锁，以减少锁的粒度。
+
+    - 代码实例 - `std::mutex` 为每个桶(或一部分)使用单独的锁.
+        ```cpp
+
+        #include <iostream>
+        #include <unordered_map>
+        #include <vector>
+        #include <mutex>
+
+        template<typename K, typename V>
+        class ThreadSafeHashTable {
+        private:
+            struct Bucket {    // 每个桶有一个std::mutex，用于同步对桶中数据的访问
+                std::unordered_map<K, V> bucket;
+                std::mutex mtx; // 注意这里的 mutex 是定义在桶类型中的, 意味着每个桶有一个互斥锁
+            };
+
+            std::vector<Bucket> buckets;
+            size_t bucket_count;
+
+        public:
+            ThreadSafeHashTable(size_t bucket_count) : bucket_count(bucket_count), buckets(bucket_count) {}
+
+            void insert(const K& key, const V& value) {
+                size_t bucket_index = std::hash<K>{}(key) % bucket_count;
+                std::lock_guard<std::mutex> lock(buckets[bucket_index].mtx);  // 锁定待操作的桶;  使用std::lock_guard锁定对应的桶，以确保插入操作的线程安全。
+                buckets[bucket_index].bucket[key] = value;  // 上锁成功后执行对应操作
+            }
+
+            bool get(const K& key, V& value) {
+                size_t bucket_index = std::hash<K>{}(key) % bucket_count;
+                std::lock_guard<std::mutex> lock(buckets[bucket_index].mtx);   // 锁定待操作的桶,  使用std::lock_guard锁定对应的桶，以确保读取操作的线程安全。
+                auto it = buckets[bucket_index].bucket.find(key);
+                if (it != buckets[bucket_index].bucket.end()) {
+                    value = it->second;
+                    return true;
+                }
+                return false;
+            }
+        };
+        ```
+        - 关键点:
+          - 细粒度锁：通过为`每个桶分配一个独立的锁`，**允许多个线程同时操作不同的桶**，从而**减少锁的争用**，提高并发性能。
+          - 互斥锁：使用std::mutex 和 std::lock_guard 确保对每个桶的操作是线程安全的。
+            - `std::lock_guard`在**构造时自动上锁，在析构时自动解锁**，避免了手动管理锁的开销和潜在的错误。
+
+
+## 有哪些常见的哈希表实现问题？
+常见的哈希表实现问题包括：
+> 内存使用不当：如果**哈希表过大**或者存在**许多空桶**，可能会导致内存浪费。
+
+> 冲突处理不佳：如果**冲突没有得到有效处理**，会严重影响哈希表的性能。
+
+> 哈希函数选择不当：一个**不好的哈希函数**可能会导致频繁的冲突。
+
+> 扩容代价高：rehash 是一个代价很高的操作，如果**发生得太频繁，可能会严重影响性能**。
