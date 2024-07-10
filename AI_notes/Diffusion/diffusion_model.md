@@ -222,3 +222,8 @@ $$
 - 跑`forward`, 通过前面那个公式计算每个time step下的噪声, 把噪声保存下来, 同时也把这个噪声加到图片里.
 - 跑`backward`, 这时候就要用到模型了, 模型的输入是每个time step对应的含噪声的图片, 输出是预测的噪声值(**注意模型的输出是噪声**), 这时候, forward阶段保存的噪声就可以作为label, 计算loss, 然后更新参数, 也就是能训练模型啦!
 
+
+--- 
+
+放一个非常不错的notebook, 分析得很详细!
+- https://lilianweng.github.io/posts/2021-07-11-diffusion-models/#forward-diffusion-process
