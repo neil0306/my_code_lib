@@ -117,6 +117,29 @@ sudo apt install nginx
    - 数据和日志将会保存在宿主机的 `/home/ubuntu/data/one-api` 目录下面，请确保该目录存在且具有写入权限，或者更改为合适的目录。
 
 
+6. 配置 Nginx 反向代理
+    - 配置文件路径：`/etc/nginx/sites-available/one-api`
+        ```nginx
+        server {
+            listen 80;
+            server_name <阿里云服务器的公网 IP>;
+
+            location / {
+                proxy_pass http://localhost:9494;  # 假设 One Hub 运行在 3000 端口
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+            }
+        }
+        ```
+    - 重启 Nginx 服务
+        ```shell
+        sudo systemctl restart nginx
+        ```
+
+
 ## 部署过程中可能会用到的 Docker 指令
 - [x] 停止容器 & 删除容器
     ```shell
