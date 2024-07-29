@@ -86,3 +86,8 @@ sudo sudo apt-get install python    # 可能会报错找不到安装包, 忽略�
 - Jetson orin nano 上的服务端下载地址：https://downloads.nomachine.com/download/?id=114&distro=ARM
   - 下载之后用 scp 上传到 Jetson 上 (或者用 ftp 上传), 然后用命令安装：`sudo dpkg -i nomachine_xxx版本_arm64.deb`
 
+Jetson 上安装好服务端后，还要去 NoMachine 官网下载电脑的客户端，然后在客户端输入 Jetson 的 IP 地址，然后再去 config 那里配置一下用户名和密码即可连接。
+![](intro_images/NoMachine客户端连接jetson设备.png)
+- 输入地址的时候有三种连接方式，如下图：
+  ![](intro_images/NoMachine输入地址的方式.png)
+
