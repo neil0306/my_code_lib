@@ -73,6 +73,24 @@ sudo sudo apt-get install python    # 可能会报错找不到安装包, 忽略�
 
 ---
 
+# SSH 连接
+SSH 连接比较基础也简单，这里主要提一些注意事项：
+1. 要使用 SSH 连接，jetson 设备上一定要安装 `openssh-server`, 检查命令为：
+    ```shell
+    sudo apt list | grep openssh-server 
+    ```
+    ![](intro_images/检查是否有安装openssh-server.png)
+
+通过 wifi 连接的话，直接用`ifconfig`找到 jetson 设备的 ip 地址，然后`ssh 用户名@ip地址`即可连接。
+
+
+**如果当前手头没有网线，也没有 wifi 可以连接**，可以使用 `type-C` 线将 jetson 设备连接到电脑上，通过此方式连接时，**jetson 设备提供了一个固定的 ip 地址**`192.168.55.1`, 此时用下面的命令就可以确保连接上
+```shell
+ssh 用户名@192.168.55.1
+```
+
+---
+
 # 常用工具安装
 
 1. 安装 pip
