@@ -99,6 +99,37 @@ sudo apt install nvidia-jetpack     # 这个库挺大的, 比较耗时, 装完�
 
 
 
+## 备份和恢复系统
+To be continued...
+
+
+
+---
+
+# 安装 CSI 摄像头
+这里使用的型号是 IMX219 的摄像头。
+实物安装的时候只需要注意：
+- 系统关机，拔掉电源线，确保设备完全断电。
+- 金手指触点没有装反，并且卡到位
+
+![](intro_images/jetson_orin_nano_摄像头安装位置.png)
+- 一共可以安装两个摄像头。
+
+测试摄像头是否可以正常使用：
+1. 到[这个仓库](https://github.com/JetsonHacksNano/CSI-Camera?tab=readme-ov-file)中 clone 代码。
+    ```shell
+    git clone https://github.com/JetsonHacksNano/CSI-Camera.git
+    ```
+2. 进入到`CSI-Camera`目录下，运行`simple_camera.py`脚本，在 jetson 设备的屏幕上就能看到摄像头画面了。
+    ```shell
+    cd CSI-Camera
+    python3 simple_camera.py
+    ```
+    - 可以用 [NoMachine](#jetson-orin-nano-远程桌面连接) 远程桌面来看这个摄像头窗口。
+    - 如果使用的是 Windows 系统，还可以用`MobaXterm`软件进行 ssh, 然后运行这个脚本，此时这个软件会通过 X11 转发画面到本地电脑上，但是由于数据传输速率的问题可能会有卡顿现象。
+
+3. 跑一下`python face_detect.py`进行人脸检测。
+
 ---
 
 # SSH 连接
