@@ -168,3 +168,29 @@ Jetson 上安装好服务端后，还要去 NoMachine 官网下载电脑的客�
 - 输入地址的时候有三种连接方式，如下图：
   ![](intro_images/NoMachine输入地址的方式.png)
 
+---
+
+# 无线网卡 (Jetson Nano)
+在网上搜到一些关于 Jetson Nano 的外置无线网卡的参考资料：
+- https://d246810g2000.medium.com/nvidia-jetson-nano-for-jetpack-4-4-01-%E7%92%B0%E5%A2%83%E5%AE%89%E8%A3%9D-fd48d5658a13
+
+Jetson Nano 是没有自带无线网卡的 (但是 Jetson Orin Nano 有)，如果需要连接 wifi 的话，可以通过 USB 接口插入一个无线网卡，然后通过配置文件进行连接。
+- 参考资料说`EDIMAX EW-7811UN V1`这款无线网卡可以正常使用，注意是 V1 版本而不是 V2 版本; 
+  - 使用时，推荐跑一下脚本修复联网不稳定的问题：
+    ```shell
+    # 先用這個指令讓網路能使用
+    $ echo options rtl8xxxu ht40_2g=1 dma_aggregation=1 | sudo tee /etc/modprobe.d/rtl8xxxu.conf
+    $ sudo reboot
+    # 再安裝完整版本
+    $ sudo apt-get update
+    $ sudo apt-get install git linux-headers-generic build-essential dkms
+    $ git clone https://github.com/pvaret/rtl8192cu-fixes.git
+    $ sudo dkms add ./rtl8192cu-fixes
+    $ sudo dkms install 8192cu/1.11
+    $ sudo depmod -a
+    $ sudo cp ./rtl8192cu-fixes/blacklist-native-rtl8192.conf /etc/modprobe.d/
+    $ sudo reboot
+    ```
+    - 这里使用的驱动代码仓库是：https://github.com/pvaret/rtl8192cu-fixes
+
+
