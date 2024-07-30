@@ -71,6 +71,34 @@ sudo sudo apt-get install python    # 可能会报错找不到安装包, 忽略�
 
 烧录结束后，Jetson 设备开机，第一次进系统时，设置完时间，wifi, 用户名和密码之后，会有一个询问，这里没截图，意思是`App partition size`的空间要设置多大，默认填入的数值是当前存储设备 (比如 SSD) 剩余的全部空间，此时一般是直接用它写入的那个数值，这个操作的意思是：`将设备剩余的空间全部格式化, 用作Jetson系统的存储空间`.
 
+
+## 安装必备库
+
+1. 安装 pip
+```shell
+sudo apt-get install python3-pip
+sudo pip3 install -U pip           # 更新最新版本
+```
+
+2. 用 pip 安装 jetson-stats
+```shell
+sudo pip3 install jetson-stats
+```
+- 使用方式：在终端直接输入 `sudo jtop`
+  - 通过按下键盘上方的数字切换不同的显示界面，一般刚安装的时候会比较关注`7 info`, 查看有哪些依赖没有安装。
+    ![](intro_images/jtop界面.png)
+    ![](intro_images/jtop界面_7_info.png)
+
+3. 安装 jtop 中显示缺少的依赖库
+```shell
+sudo apt update                     # 或者 sudo apt-get update
+sudo apt install nvidia-jetpack     # 这个库挺大的, 比较耗时, 装完大概消耗5-6GB的空间, 所以需要确保网速和空间都足够
+```
+ - 安装完成后，再使用一次 `sudo jtop` 查看除了`OpenCV`之外的依赖库是否都安装好了。
+    ![](intro_images/jtop验证是否已经安装好nvidia-jetpack.png)
+
+
+
 ---
 
 # SSH 连接
@@ -88,27 +116,6 @@ SSH 连接比较基础也简单，这里主要提一些注意事项：
 ```shell
 ssh 用户名@192.168.55.1
 ```
-
----
-
-# 常用工具安装
-
-1. 安装 pip
-```shell
-sudo apt-get install python3-pip
-sudo pip3 install -U pip           # 更新最新版本
-```
-
-2. 用 pip 安装 jetson-stats
-```shell
-sudo pip3 install jetson-stats
-```
-- 使用方式：在终端直接输入 `sudo jtop`
-  - 通过按下键盘上方的数字切换不同的显示界面，一般刚安装的时候会比较关注`7 info`, 查看有哪些依赖没有安装。
-    ![](intro_images/jtop界面.png)
-    ![](intro_images/jtop界面_7_info.png)
-
---- 
 
 # Jetson Orin Nano 外接实体开关
 按照下图的方式接线即可，需要注意有个黄色的跳线，它是用来`禁用上电时自动开机`功能的。
