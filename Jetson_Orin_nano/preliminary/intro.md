@@ -101,6 +101,76 @@ sudo apt install nvidia-jetpack     # 这个库挺大的, 比较耗时, 装完�
 ## 安装支持 CUDA 的 OpenCV (根据需求安装)
 安装过程查看笔记 [OpenCV_CUDA_install](./OpenCV_CUDA_install.md).
 
+## 配置 CUDA
+nvidia-jetpack 中已经帮我们装好了 CUDA, 所以这里只需要配置一下即可：
+1. 打开`~/.bashrc`文件
+    ```shell
+    sudo vim ~/.bashrc
+    ```
+
+2. 在文档末尾添加以下内容
+    ```shell
+    export CUDA_HOME=/usr/local/cuda-11.4
+    export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64:$LD_LIBRARY_PATH
+    export PATH=/usr/local/cuda-11.4/bin:$PATH
+    ```
+    - 具体 cuda 版本可以根据`/usr/local`里的 cuda 文件夹版本号进行修改
+
+3. 保存并查看配置
+    ```shell
+    source ~/.bashrc
+    nvcc -V
+    ```
+
+![](intro_images/修改好的CUDA配置.png)
+
+---
+
+## (可选) 将 swap 空间调整为内存的两倍，防止内存不足
+1. 编辑`/etc/systemd/nvzramconfig.sh`文件
+    ```shell
+    sudo vim /etc/systemd/nvzramconfig.sh
+    ```
+
+2. 找到`mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))`这一行，将`/ 2`改为`* 2`
+    ```bash
+    #!/bin/bash
+    #
+    # Copyright (c) 2019-2020, NVIDIA CORPORATION.  All rights reserved.
+    #
+
+    NRDEVICES=$(grep -c ^processor /proc/cpuinfo | sed 's/^0$/1/')
+    if modinfo zram | grep -q ' zram_num_devices:' 2>/dev/null; then
+            MODPROBE_ARGS="zram_num_devices=${NRDEVICES}"
+    elif modinfo zram | grep -q ' num_devices:' 2>/dev/null; then
+            MODPROBE_ARGS="num_devices=${NRDEVICES}"
+    else
+            exit 1
+    fi
+    modprobe zram "${MODPROBE_ARGS}"
+
+    # Calculate memory to use for zram (1/2 of ram)
+    totalmem=`LC_ALL=C free | grep -e "^Mem:" | sed -e 's/^Mem: *//' -e 's/  *.*//'`
+    # ------- 这里就是要修改的地方 -------
+    mem=$((("${totalmem}" / 2 / "${NRDEVICES}") * 1024))     # 将这一行修改为 mem=$((("${totalmem}" * 2 / "${NRDEVICES}") * 1024)), 即把 2 前面的除号改成乘号
+    # ---------------------------------
+
+    # initialize the devices
+    for i in $(seq "${NRDEVICES}"); do
+            DEVNUMBER=$((i - 1))
+            echo "${mem}" > /sys/block/zram"${DEVNUMBER}"/disksize
+            mkswap /dev/zram"${DEVNUMBER}"
+            swapon -p 5 /dev/zram"${DEVNUMBER}"
+    done
+    ```
+
+3. 保存退出，然后重启系统
+4. 用`free -h` 查看 swap 空间是否为内存的两倍
+
+![](intro_images/修改swap空间为内存的两倍.png)
+
+---
+
 ## 备份和恢复系统
 To be continued...
 
