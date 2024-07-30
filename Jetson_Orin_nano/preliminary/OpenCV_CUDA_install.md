@@ -2,7 +2,7 @@
 在[intro 笔记](./intro.md#安装必备库)中，通过安装`jetson-stats`工具包，我们可以借助`sudo jtop`命令，并用键盘的数字 7 切换到`7 info`页面，查看当前系统中已经安装的依赖库，以及还缺少哪些依赖库。
 
 在这里，我们会看到除了`OpenCV with CUDA`之外的依赖库都已经安装好了。
-![](../preliminary/intro_images/jtop界面_7_info.png)
+![](../preliminary/intro_images/jtop验证是否已经安装好nvidia-jetpack.png)
 
 
 ## 下载源码
