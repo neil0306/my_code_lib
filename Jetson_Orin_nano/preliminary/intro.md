@@ -98,6 +98,8 @@ sudo apt install nvidia-jetpack     # 这个库挺大的, 比较耗时, 装完�
     ![](intro_images/jtop验证是否已经安装好nvidia-jetpack.png)
 
 
+## 安装支持 CUDA 的 OpenCV (根据需求安装)
+安装过程查看笔记 [OpenCV_CUDA_install](./OpenCV_CUDA_install.md).
 
 ## 备份和恢复系统
 To be continued...
