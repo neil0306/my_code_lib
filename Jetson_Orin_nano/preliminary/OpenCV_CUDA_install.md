@@ -326,6 +326,17 @@
     ```
    - 运行代码后，记得运行`sudo jtop`查看一下 GPU 和 CPU 使用情况。
 
+---
+# 恢复 swap 空间为原来的状态
+1. 停止使用前面创建的 swap 空间
+    ```shell
+    sudo swapoff /var/swapfile
+    ```
+2. 删除 swap 空间
+    ```shell
+    sudo rm /var/swapfile
+    ```
+    - 如果不删除 swap 空间，下次开机的时候会继续使用这个 swap 空间，但是这个 swap 空间是我们手动创建的，不是系统默认的，所以不建议保留。
 
 ---
 
