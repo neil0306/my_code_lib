@@ -71,6 +71,33 @@ sudo sudo apt-get install python    # 可能会报错找不到安装包, 忽略�
 
 烧录结束后，Jetson 设备开机，第一次进系统时，设置完时间，wifi, 用户名和密码之后，会有一个询问，这里没截图，意思是`App partition size`的空间要设置多大，默认填入的数值是当前存储设备 (比如 SSD) 剩余的全部空间，此时一般是直接用它写入的那个数值，这个操作的意思是：`将设备剩余的空间全部格式化, 用作Jetson系统的存储空间`.
 
+----
+
+## [可选] 修改 apt 源为国内镜像源
+先备份原来的源文件，再修改源文件。
+```shell
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+```
+  - 修改内容为 (这是 ubuntu 20.04 用的)：
+    ```bash
+    deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+    deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+
+    # deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+    # deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+    # deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+    # deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+
+    ## 预发布源，不建议启用
+    # deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+    # deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+    ```
+    - 源地址可能会因各种原因不可用，到时候上网搜一份新的替换即可。
+
+---
 
 ## 安装必备库
 
@@ -101,6 +128,8 @@ sudo apt install nvidia-jetpack     # 这个库挺大的, 比较耗时, 装完�
 ## 安装支持 CUDA 的 OpenCV (根据需求安装)
 安装过程查看笔记 [OpenCV_CUDA_install](./OpenCV_CUDA_install.md).
 
+----
+
 ## 配置 CUDA
 nvidia-jetpack 中已经帮我们装好了 CUDA, 所以这里只需要配置一下即可：
 1. 打开`~/.bashrc`文件
@@ -123,6 +152,58 @@ nvidia-jetpack 中已经帮我们装好了 CUDA, 所以这里只需要配置一�
     ```
 
 ![](intro_images/修改好的CUDA配置.png)
+
+
+---
+## 安装 pytorch
+1. 首先用`jtop`, 切换到 Info, 查看 JetPack 的版本，这里的版本是`5.1.1`
+![](intro_images/jtop确认JetPack版本号.png)
+
+2. 去[NVIDIA 官网](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-pytorch)和[pytorch 仓库](https://github.com/pytorch/vision)找到兼容的版本号
+    ![](intro_images/NVIDIA官网找到的jetpack版本兼容的pytorch版本号.png)
+    ![](intro_images/pytorch仓库找到的版本号.png)
+    - [博客](https://blog.csdn.net/jam12315/article/details/130264074) 中提到：实际上，在官网提供的轮子包里显示的 `Jetpack 5.1.1` 可用的版本组合是 `pytorch 1.14.0`，而 torchvision 对应的版本为`torchvision 0.15.1`. 
+
+3. 安装依赖
+    ```shell
+    sudo apt-get -y install autoconf bc build-essential g++-8 gcc-8 clang-8 lld-8 gettext-base gfortran-8 iputils-ping libbz2-dev libc++-dev libcgal-dev libffi-dev libfreetype6-dev libhdf5-dev libjpeg-dev liblzma-dev libncurses5-dev libncursesw5-dev libpng-dev libreadline-dev libssl-dev libsqlite3-dev libxml2-dev libxslt-dev locales moreutils openssl python-openssl rsync scons python3-pip libopenblas-dev
+    ```
+
+4. 在[NVIDIA 官方仓库](https://developer.download.nvidia.com/compute/redist/jp/)里下载 torch 轮子
+    - 先找到`V51`(因为 JetPack 版本是 5.1.1), 然后去到 pytorch 文件夹下，找到`torch-1.14.0a0+44dac51c.nv23.02-cp38-cp38-linux_aarch64.whl`进行下载。(pytorch 2.0.0 的编译模型功能我们目前用不到)
+    - 安装
+        ```shell
+        pip3 install torch-1.14.0a0+44dac51c.nv23.02-cp38-cp38-linux_aarch64.whl
+        ```
+
+
+5. 用下面的命令从源码安装 torchvision
+    ```shell
+    # 装依赖
+    sudo apt install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+
+    # 更新 pillow
+    pip3 install --upgrade pillow
+
+    # 下载 torchvision 源码安装包 (根据前面查到的匹配的版本进行调整)
+    wget https://github.com/pytorch/vision/archive/refs/tags/v0.15.1.zip
+    unzip v0.15.1.zip
+    cd vision-0.15.1
+    export BUILD_VERSION=0.15.1   # 根据情况调整版本号
+
+    # 编译安装
+    python3 setup.py install --user
+    ```
+    - 这个过程有点慢，需耐心等候，如果失败，再多试几次。
+
+
+6. 验证安装
+    ```shell
+    python3
+    import torch
+    import torchvision
+    print(torch.cuda.is_available())	# 这一步如果输出 True 那么就成功了！
+    ```
 
 ---
 
