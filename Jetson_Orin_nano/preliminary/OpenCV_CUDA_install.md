@@ -4,6 +4,8 @@
 在这里，我们会看到除了`OpenCV with CUDA`之外的依赖库都已经安装好了。
 ![](../preliminary/intro_images/jtop验证是否已经安装好nvidia-jetpack.png)
 
+同时，因为我们要编译 CUDA 版本的 OpenCV，就不可避免要用到 nvcc 编译器，因此，我们还需要首先确保 nvcc 已经配置正常，具体可以参考[intro 笔记的 CUDA 配置部分](./intro.md#配置CUDA)。
+![](intro_images/修改好的CUDA配置.png)
 
 ## 下载源码
 1. 下载 OpenCV 源码
@@ -57,10 +59,12 @@
     build-essential cmake git unzip pkg-config \
     libglew-dev \
     libtiff5-dev \
+    libtiff-dev \
     zlib1g-dev \
     libjpeg-dev \
     libpng-dev \
-    libjasper-dev \
+    libopenexr-dev \
+    libwebp-dev \
     libavcodec-dev \
     libavformat-dev \
     libavutil-dev \
@@ -117,7 +121,7 @@
    - 有部分注释的 cmake 指令：
         ```bash
         cmake -D CMAKE_BUILD_TYPE=Release \
-                -D CMAKE_INSTALL_PREFIX=/usr/local \   # 不要随便修改这个安装路径，不然 python3 无法正常索引，手动添加索引路径很麻烦
+                -D CMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)")    # 有些博客建议的路径是 /usr/local 
                 -D BUILD_PNG=ON \ 	# 启用 PNG 图片格式的支持。
                 -D OPENCV_ENABLE_NONFREE=ON \  # 启用 OpenCV 中的非自由算法，如 SIFT 和 SURF 等。
                 -D INSTALL_PYTHON_EXAMPLES=ON \ 
@@ -126,7 +130,7 @@
                 -D BUILD_JPEG=ON \  # 启用 JPEG 图片格式支持。
                 -D BUILD_JASPER=OFF \  # 不编译 Jasper 库，即不添加 JPEG2000 格式支持。
                 -D BUILD_ZLIB=OFF \  # 不编译 ZLIB 支持，通常用于压缩和解压缩。
-                -D BUILD_EXAMPLES=OFF \	 # 不编译例程，这可以加快编译的速度
+                -D BUILD_EXAMPLES=ON \	 # 编译例程，虽然不编译的话可以加快编译的速度
                 -D BUILD_JAVA=OFF \     # 不编译 java 接口
                 -D BUILD_opencv_python2=OFF \   # 不编译 python2 的库
                 -D BUILD_opencv_python3=ON \	 # 编译 python3 的库
@@ -145,22 +149,27 @@
                 -D WITH_CUBLAS=1 \      # 基本线性代数子程序的加速。
                 -D WITH_LIBV4L=ON \     # 启用 Video4Linux，用于摄像头支持。
                 -D WITH_GTK=ON \        # 启用 GTK，用于图形用户界面。
+                -D WITH_GTK_2_X=ON \    # 启用 GTK2，用于图形用户界面。
                 -D WITH_VTK=OFF \       # 不使用 Visualization Toolkit，通常用于 3D 图像处理。
                 -D WITH_TBB=ON \        # 启用 Intel Threading Building Blocks 进行并行计算优化。
                 -D WITH_1394=OFF \      # 不使用 IEEE 1394 驱动，用于处理某些类型的摄像头。
                 -D WITH_OPENEXR=OFF \   # 不使用 OpenEXR 格式支持，通常用于处理高动态范围的图像。
-                -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11 \    # 指定 CUDA 工具包的安装路径。这里要根据当前设备使用 cuda 设置路径！
-                -D CUDA_ARCH_BIN=5.3 \   # 指定 CUDA 架构，这个参数需要根据你的 GPU 型号来设置。
+                -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.4 \    # 指定 CUDA 工具包的安装路径。这里要根据当前设备使用 cuda 设置路径！
+                -D CUDA_ARCH_BIN=8.7 \   # 指定 CUDA 架构，这个参数需要根据你的 GPU 型号来设置。orin nano 是 8.7, nano 则是 5.3
                 -D CUDA_ARCH_PTX="" \    # 不生成 PTX 代码，PTX 为中间代码，可以在不同的 CUDA 版本间提供一定的兼容性
-                -D INSTALL_C_EXAMPLES=OFF \  # 不安装 C 语言示例代码。
+                -D INSTALL_C_EXAMPLES=ON \  # 安装 C 语言示例代码。
                 -D INSTALL_TESTS=OFF \      # 不安装测试代码。
                 -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.10.0/modules \  # 指定 opencv_contrib 扩展包的路径，这里需要检查和你自己的路径相同
+                -D OPENCV_GENERATE_PKGCONFIG=ON \  # (用于 cpp) 生成 pkg-config 文件，用于编译时查找库文件。
+                -D PYTHON_EXECUTABLE=$(which python3) \  # 指定 python3 的路径
+                -D PYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \  # 指定 python3 的头文件路径
+                -D PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \  # 指定 python3 的库文件路径
                 ..     # 用来指定 CMakeList.txt 文件的位置
         ```
     - 无注释版本：
         ```bash
         cmake -D CMAKE_BUILD_TYPE=Release \
-                -D CMAKE_INSTALL_PREFIX=/usr/local  \
+                -D CMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)") \
                 -D BUILD_PNG=ON \
                 -D OPENCV_ENABLE_NONFREE=ON \
                 -D INSTALL_PYTHON_EXAMPLES=ON \
@@ -169,7 +178,7 @@
                 -D BUILD_JPEG=ON \
                 -D BUILD_JASPER=OFF \
                 -D BUILD_ZLIB=OFF \
-                -D BUILD_EXAMPLES=OFF \
+                -D BUILD_EXAMPLES=ON \
                 -D BUILD_JAVA=OFF \
                 -D BUILD_opencv_python2=OFF \
                 -D BUILD_opencv_python3=ON \
@@ -188,16 +197,21 @@
                 -D WITH_CUBLAS=1 \
                 -D WITH_LIBV4L=ON \
                 -D WITH_GTK=ON \
+                -D WITH_GTK_2_X=ON \
                 -D WITH_VTK=OFF \
                 -D WITH_TBB=ON \
                 -D WITH_1394=OFF \
                 -D WITH_OPENEXR=OFF \
-                -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11 \
-                -D CUDA_ARCH_BIN=5.3 \
+                -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-11.4 \
+                -D CUDA_ARCH_BIN=8.7 \
                 -D CUDA_ARCH_PTX="" \
-                -D INSTALL_C_EXAMPLES=OFF \
+                -D INSTALL_C_EXAMPLES=ON \
                 -D INSTALL_TESTS=OFF \
-                -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.10.0/modules\
+                -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.10.0/modules \
+                -D OPENCV_GENERATE_PKGCONFIG=ON \
+                -D PYTHON_EXECUTABLE=$(which python3) \
+                -D PYTHON3_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+                -D PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
                 ..
         ```
 
@@ -252,79 +266,66 @@
         ln -s "cv2.*.so 文件路径" "python 标准库的 site-packages 路径/cv2.so"
         ```
 
+5. 为了防止某些库访问 OpenCV 的默认路径是`/usr/share/opencv4`, 我们最好创建一个软连接，以防万一。
+    ```shell
+    sudo ln -s /usr/local/share/opencv4   /usr/share/opencv4
+    ```
+    - 比如 [CSI-camnera 库](https://github.com/JetsonHacksNano/CSI-Camera)里面人脸识别的测试脚本用的就是这个路径...
 
-5. 网上抄了一个 cpp 写的人脸检测代码 (**要用到摄像头**)，测一下除了 python 之外，cpp 能不能用上编译好的 OpenCV:
+6. 分别测试一下 OpenCV 在 CPU 和 CUDA 中使用时是否正常：
     ```cpp
     #include <iostream>
-    #include <string>
-    #include <opencv2/opencv.hpp>
     #include <opencv2/core.hpp>
-    #include <opencv2/highgui.hpp>
-    #include <opencv2/imgproc.hpp>
-    #include <opencv2/objdetect.hpp>
-    #include <opencv2/imgproc/types_c.h>
-    #include <opencv2/videoio.hpp>
-    #include <opencv2/cudaobjdetect.hpp>
+    #include <opencv2/cudaarithm.hpp>
+    #include <opencv2/cudafilters.hpp>
     #include <opencv2/cudaimgproc.hpp>
+    #include <opencv2/highgui.hpp>
 
-    using namespace std;
-    using namespace cv;
+    int main() {
+        // 检查 CUDA 设备
+        int cuda_devices = cv::cuda::getCudaEnabledDeviceCount();
+        std::cout << "CUDA 设备数量：" << cuda_devices << std::endl;
 
-
-    int main( int argc, char** argv )
-    {
-        // Initialize OpenCV with CUDA support
-        cv::cuda::setDevice(0); // Use the first CUDA device
-        cv::cuda::printCudaDeviceInfo(0);
-
-
-        VideoCapture cap(1);
-        //创建显示窗口
-        namedWindow("faceWithCUDA", WINDOW_AUTOSIZE);
-
-        cv::Mat img;
-
-        cv::cuda::GpuMat gpuImg, gpuImgGray;
-
-        cv::cuda::GpuMat objbuf;
-
-
-        cv::Ptr<cv::cuda::CascadeClassifier> faceCascade = cv::cuda::CascadeClassifier::create("/home/tuotuo/opencv-4.5.3/data/haarcascades_cuda/haarcascade_frontalface_alt.xml");
-
-
-        //逐帧显示
-        while(true)
-        {
-
-            cap >> img;
-
-            gpuImg.upload(img);
-
-            cv::cuda::cvtColor(gpuImg, gpuImgGray, cv::COLOR_BGR2GRAY);
-
-            faceCascade->detectMultiScale(gpuImgGray, objbuf);
-
-
-            std::vector<cv::Rect> faces;
-            faceCascade->convert(objbuf, faces);
-
-            for (int i = 0; i < faces.size(); i++)
-            {
-                cv::rectangle(img, faces[i], cv::Scalar(255, 0, 0), 2);
-            }
-
-
-            imshow("faceWithCUDA",img);
-
-            int keycode = cv::waitKey(30) & 0xff ; //ESC 键退出
-                if (keycode == 27) break ;
+        if (cuda_devices == 0) {
+            std::cout << "没有检测到 CUDA 设备，请检查 CUDA 安装" << std::endl;
+            return -1;
         }
 
-        cap.release();
-        destroyAllWindows() ;
+        // 打印 CUDA 设备信息
+        cv::cuda::printCudaDeviceInfo(0);
+
+        // 加载图像
+        cv::Mat image = cv::imread("owl.png");
+        if (image.empty()) {
+            std::cout << "无法加载图像 owl.png，请确保图像文件存在" << std::endl;
+            return -1;
+        }
+
+        // 创建 GPU Mat 对象
+        cv::cuda::GpuMat gpu_image;
+        gpu_image.upload(image);
+
+        // 在 GPU 上进行图像处理操作 (例如：高斯模糊)
+        cv::cuda::GpuMat gpu_result;
+        cv::Ptr<cv::cuda::Filter> gaussian = cv::cuda::createGaussianFilter(gpu_image.type(), -1, cv::Size(5, 5), 1.0);
+        gaussian->apply(gpu_image, gpu_result);
+
+        // 将结果下载回 CPU
+        cv::Mat result;
+        gpu_result.download(result);
+
+        // 显示原图和处理后的图像
+        cv::imshow("Original", image);
+        cv::imshow("Processed", result);
+        cv::waitKey(0);
+
+        return 0;
     }
     ```
-   - 运行代码后，记得运行`sudo jtop`查看一下 GPU 和 CPU 使用情况。
+   - 将代码写入一个 cpp 文件 (如 test.cpp) 中，然后编译
+        ```shell
+        g++ -std=c++11 test.cpp -o test_opencv_cuda `pkg-config --cflags --libs opencv4` -I/usr/local/cuda/include -L/usr/local/cuda/lib64 -lcudart -lcuda
+        ``` 
 
 ---
 # 恢复 swap 空间为原来的状态
