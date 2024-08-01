@@ -1,9 +1,48 @@
 
 # 论文笔记
 
+出发点：
+1. 传统 RAG 的能力一般是拿 Query 去 vector store 中进行检索，然后返回相关的文档片段。这种方式一般会比较精细化，并且 retrieve 回来的东西无法用于回答诸如 "这个数据集有什么特征" 这种 high-level 的问题。
+2. 能针对 Query 完成总结性的 high-level 回答的任务一般称为 QFS(Query Focus Summarization), 但是以往的 QFS 方法无法针对大规模数据进行总结。
+
+为解决这两个问题，文章提出 GraphRAG, Pipeline 如下图所示。
+![](GraphRAG_images/GraphRAG论文中的Pipeline.png)
+
+整体流程可以画成如下形式：
+![](GraphRAG_images/GraphRAG整体流程.png)
+  1. [Text Chunks] 先对 source text 进行切分，得到众多 chunks, 但需要注意切分的粒度 (granularity), 它会影响到后续的处理。
+     - 注意：chunks 切得长虽然可以减少使用 LLM 的次数，但会导致 retrieve 阶段的 recall 变低，而 precision 会变高; chunk 切得短就需要调用更多次 LLM 进行处理，不过切得短能让 recall 变高，但 precision 会变低。
+        > 这个问题的主要原因在于 LLM 在单词处理时很可能会遗漏某些有用的东西，比如对于长文本提取 entity 时容易出现缺漏等，然后导致 recall 下降。
+  
+  2. [Element Instances] 将每一份 Text chunk 送入 LLM, 通过使用不同的 prompt template 来`识别&提取`其中能作为 graph node, edges 的东西，也就是 `element instances`的提取。
+     - 使用多个 llm prompt 来实现，首先识别文本中的所有 entity，包括它们的名称、类型和描述，然后识别"明显相关实体"之间的所有关系，包括源和目标实体及其关系的描述。
+     - 这个过程是`multiple rounds`的，每一轮都要确定是否有遗漏的 entity, 并且通过这种方式可以缓解 large chunk size 带来的 recall 降低问题。
+  
+  3. [Element Summaries] 将 entity 和 relationship 继续丢到 LLM 中，让 LLM 针对能匹配的 instances 进行描述性的总结。
+     - 值得留意的是，LLM 在提取 entity 的时候，尤其是进行多轮提取的时候，很可能会出现重复的 entity, 而这里额外增加的 summary 任务可以兼顾地实现去重的目的。
+        > LLM 可能无法对某个 chunks 连续提取出 entity 以及相关的 relationship，然后使得此时构建的 Graph 可能出现多个冗余的 node 以及冗余的边（也就是 Graph 大概率是包含噪声的）。但是当我们直接将冗余的 entity 以及它们的 relationship 丢给 LLM 时（而不是让 LLM 一次性完成提取和去重这两个任务），LLM 是有能力将冗余信息筛掉的，这个特性使得 GraphRAG 能很好地完成全局的、query-focus 的总结性任务。同时也是 GraphRAG 与 typical knowledge graph 的主要区别。【这是作者给出的观点】
+  
+  4. [Graph Communities] 将 element instances 送入 community detection 算法中，得到 Graph Communities。
+     - 第三步中精修后的 entity node 和 relation 可以被建模为`齐次无向加权图(homogeneous undirected weighted graph)`，其中实体节点由关系边连接，边的权重则为检测到的关系实例 (relationship instances) 的归一化计数。
+     - 对建模好的无向加权图使用 community detection 算法进行社区划分，类似于进行聚类，将相互关系密切 (边的权重大) 的节点聚集为一个社区。
+
+  5. [Community Summaries] 对 community 生成不同层级的总结性描述。
+     - Leaf-level communities: 
+        > 对叶级社区（节点、边、协变量）的 element summaries 进行优先排序，然后迭代地添加到 llm 上下文窗口中，直到达到标记限制。
+        >> 优先规则为：对于每个社区边缘，按源节点和目标节点度数的总和（即总体显著性）**递减顺序**，依次添加源节点、目标节点、链接的协变量和边缘本身的描述。
+     - High-level communities: 
+        > 如果所有元素摘要 (element summaries) 都能适应上下文窗口的 token 限制，则按叶级社区的处理方式汇总社区内的所有元素摘要。否则，根据元素摘要所需的 token 数量按**递减的顺序**对子社区进行排名，并逐步用子社区摘要（较短）替换其相关的元素摘要（较长），直到适应 Context Window 的 toen 限制。
+
+  6. [Community Summaries -> Community Answers -> Global Answers] 按照下面的顺序按层级生成回答
+    1. Prepare Community Answers: 
+        > 前面已经生成过 community summaries, 这里会将这些 summaries 进行 random shuffle, 然后再把它们切成指定长度的 chunks.
+        >> 这样可以确保单个 context Window 中包含的与 Query 相关的信息不会集中在一起，而是分散在不同的 chunks 中，有助于提高 recall。
 
 
 
+
+构建 community 的流程如下：
+![](GraphRAG_images/构建community流程.png)
 
 ---
 
@@ -66,6 +105,22 @@ python -m graphrag.index --root ./ragtest
 - 仅构建这本书的内容，OpenAI 收费大概 2.5 美金，比较贵！
   ![](GraphRAG_images/GraphRAG构建index费用.png)
 
+
+Query - 全局知识库搜索 (High Level, 比如概括一本书的内容)：
+```shell
+python -m graphrag.query \
+--root ./ragtest \
+--method global \
+"What are the top themes in this story?"
+```
+
+Query - 局部知识库搜索：
+```shell
+python -m graphrag.query \
+--root ./ragtest \
+--method local \
+"Who is Scrooge, and what are his main relationships?"
+```
 
 
 ---
