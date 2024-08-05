@@ -2,16 +2,25 @@
 
 webrtc 是用来实现实时通信的开源项目，它提供了一系列的 API，可以让浏览器之间直接进行音视频通信，而不需要任何插件或者第三方软件的支持。
 ![](About_WebRTC_images/webrtc架构.png)
+- 紫色部分是 Web 应用开发者 API 层
+- 蓝色实线部分是面向浏览器厂商的 API 层
+- 蓝色虚线部分是浏览器厂商可以自定义实现的部分
 
 
+参考资料：
 - [支持 WebRTC 的浏览器](https://caniuse.com/?search=webrtc)
 - [WebRTC 原理](https://www.zhihu.com/question/571333555/answer/2794554060)
+- [哔哩哔哩上的教程](https://www.bilibili.com/video/BV1vY4y197Wi/?p=3&vd_source=7cf7026bc2c23d0b0b88a3094e5ce55a)
 
+
+## 诊断当前浏览器是否支持 WebRTC
+可以直接借助腾讯云实时音视频的检测工具网站进行诊断：
+- https://web.sdk.qcloud.com/trtc/webrtc/demo/detect/index.html
 
 ## ICE 建立过程
 ![](About_WebRTC_images/ICE建立过程.png)
 
-connect 这个过程应该就是用浏览器打开服务端的网页 (访问聊天室网页) , 然后点击连接到房间的操作。
+connect 这个过程指的是用浏览器打开服务端的网页 (访问聊天室网页) , 然后点击连接到房间的操作 (属于聊天室管理的一环，包含通知"有人进入/离开"等)。
 1. PeerConnection 是 WebRTC 中非常重要的类，如果我们构建的是一个聊天室，那么 client A 要进入房间的时候，首先就会创建一个 PeerConnection 对象。
 
 2. 创建好 PeerConnection 对象之后，client A 就会开始收集自己的各种流信息 (比如音频视频流), 以及自己的音视频参数信息 (供对方解码音视频使用), 当然了，自己的网络 ip 之类的信息也会被收集。
@@ -26,8 +35,11 @@ connect 这个过程应该就是用浏览器打开服务端的网页 (访问聊�
 
 7. Client B 把自己 create 的 Answer 走 SDP 协议发回 Signal server. 之后 Signal server 会把 B 的 Answer 信息发给 A。
    - 到这里，A 与 B 的音视频信息已经交换完毕，但是他们之间的网络信息还没有交换完毕，这个时候就需要下面的 STUN Server 了。
-     - 这里先不详细介绍 STUN server, 只需要知道兼具了打通 tunnel 和 中继的功能即可 (实在不行就模糊地理解为一个牛逼的路由器就好了)。
+     - 这里先不详细介绍 STUN server, 只需要知道兼具了打通 tunnel 的功能即可 (实在不行就模糊地理解为一个牛逼的路由器就好了)。
      - 如果需要自己部署的话，可以搜一下`Coturn`的部署。
+       - Coturn 是一个开源项目，它集成了`STUN协议`和`TURN协议`的功能，可以用来解决 NAT 穿透问题。
+       - STUN: Session Traversal Utilities for NAT, 用于解决 NAT 穿透问题，比如它会帮当前设备的内网 IP 如`192.168.1.10:300`找到当前设备对应的外网 IP 的可用的端口比如`176.1.55.176:3000`, 如果 A 和 B 互相知道了对方的公网 IP 和端口，此时就可以直接互相发送数据了，这种状态称为 P2P。
+       - TURN: Traversal Using Relays around NAT, 用于解决 NAT 穿透问题，它与 STUN 不同的地方是，TURN 并没有帮 A 和 B 分别找出各自公网 IP 下可用的端口，而是借助一个中继服务器 (Relay server) 把 A 和 B 连接起来，这时候，A 和 B 之间互相发数据的时候数据包是一定要经过 Relay Server 的。
 
 8. Client A 为了能将自己的音视频流量包以低延迟的方式发送给 B, 它首先需要找到 B 的网络地址，而由于不是内网，所以需要借助 STUN server 获取可以访问的公网 ip 和端口。
    1. A 首先向 STUN server 请求一个网络地址，然后 STUN server 会返回一个地址给 A。
@@ -36,6 +48,16 @@ connect 这个过程应该就是用浏览器打开服务端的网页 (访问聊�
     - 到这里，A 与 B 之间的点对点连接就完成了。
 
 走完 8 这个过程，A B 双方就应该可以看到对方的音频和视频了。
+
+
+需要留意一下的细节：
+```txt
+Signal Server 对于房间的管理：
+    A 进入聊天房间时，房间内还没有人。
+    B 加入房间后，发现房间有 A 存在
+        这个过程包含：Signal Server 发通知给 A, 说 B 进来了; 同时，Signal Server 发通知给 B, 说 A 在房间里。
+```
+
 
 
 ## WebRTC 的网络拓扑
