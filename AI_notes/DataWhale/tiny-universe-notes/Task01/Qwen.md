@@ -4,7 +4,7 @@
 
 整体流程：
 1. Tokenizer: 与一般的 LLM 没有什么太大区别，遵守 NLP 基本法，都是先将 Raw sentence 进行 Tokenizer (去掉停词，词形还原等操作), 此时，原来的句子将变成一个个可能不太完整的单词，称为`token`
-2. Input_ids: 从一个训练好的`词表`中找出每一个 token 对应的 ID, 也就是 token_id
+2. Input_ids: 从一个训练好的`词表`中找出每一个 token (在这里甚至可以称之为“子词”) 对应的 ID, 也就是 token_id
 3. 把 token_id, 丢给一个预训练好的 Embedding Layer, 它负责将每一个 token_id 映射为固定长度的向量，也就是 embedding vector.
     ![](Qwen_images/Embedding_Layer在代码中的样子.png) 
 4. Layers 结构：主要由 transformer 的 Decoder 结构组成，值得注意的地方有：
