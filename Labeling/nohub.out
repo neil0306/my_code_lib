@@ -1,0 +1,1319 @@
+=> Database and media directory: /Users/nullptr/Library/Application Support/label-studio
+=> Static URL is set to: /static/
+=> Database and media directory: /Users/nullptr/Library/Application Support/label-studio
+=> Static URL is set to: /static/
+Read environment variables from: /Users/nullptr/Library/Application Support/label-studio/.env
+get 'SECRET_KEY' casted as '<class 'str'>' with default ''
+Starting new HTTPS connection (1): pypi.org:443
+https://pypi.org:443 "GET /pypi/label-studio/json HTTP/1.1" 200 32786
+Performing system checks...
+
+/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_provider_connection_create" in AllPermissions has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_provider_connection_view" in AllPermissions has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_provider_connection_change" in AllPermissions has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/pydantic/_internal/_fields.py:132: UserWarning: Field "model_provider_connection_delete" in AllPermissions has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+System check identified no issues (1 silenced).
+October 20, 2024 - 00:18:12
+Django version 3.2.25, using settings 'label_studio.core.settings.label_studio'
+Starting development server at http://0.0.0.0:8080/
+Quit the server with CONTROL-C.
+[2024-10-20 00:18:15,562] [django.server::log_message::161] [INFO] "GET / HTTP/1.1" 302 0
+[2024-10-20 00:18:15,562] [django.server::log_message::161] [INFO] "GET / HTTP/1.1" 302 0
+[2024-10-20 00:18:15,583] [django.server::log_message::161] [INFO] "GET /user/login/ HTTP/1.1" 200 5580
+[2024-10-20 00:18:15,583] [django.server::log_message::161] [INFO] "GET /user/login/ HTTP/1.1" 200 5580
+[2024-10-20 00:18:15,619] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 00:18:15,619] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 00:18:15,623] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 200 5248
+[2024-10-20 00:18:15,623] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 200 5248
+[2024-10-20 00:18:15,627] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 200 9254
+[2024-10-20 00:18:15,627] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 200 9254
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 200 366
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 200 366
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 200 6123
+[2024-10-20 00:18:15,629] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 200 6123
+[2024-10-20 00:18:15,649] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 200 39408
+[2024-10-20 00:18:15,649] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 200 39408
+[2024-10-20 00:18:15,650] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 200 529
+[2024-10-20 00:18:15,650] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 200 529
+[2024-10-20 00:18:15,650] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 200 52680
+[2024-10-20 00:18:15,650] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 200 52680
+[2024-10-20 00:18:15,651] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 200 51972
+[2024-10-20 00:18:15,651] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 200 51972
+[2024-10-20 00:18:17,183] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 00:18:17,183] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 00:18:17,198] [django.server::log_message::161] [INFO] "POST /user/login/?next=/projects/ HTTP/1.1" 302 0
+[2024-10-20 00:18:17,198] [django.server::log_message::161] [INFO] "POST /user/login/?next=/projects/ HTTP/1.1" 302 0
+[2024-10-20 00:18:17,211] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 00:18:17,211] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 00:18:17,243] [django.server::log_message::161] [INFO] "GET /static/css/uikit.bee6fc38db3d.css HTTP/1.1" 200 3868
+[2024-10-20 00:18:17,243] [django.server::log_message::161] [INFO] "GET /static/css/uikit.bee6fc38db3d.css HTTP/1.1" 200 3868
+[2024-10-20 00:18:17,244] [django.server::log_message::161] [INFO] "GET /static/fonts/roboto/roboto.css HTTP/1.1" 200 3431
+[2024-10-20 00:18:17,244] [django.server::log_message::161] [INFO] "GET /static/fonts/roboto/roboto.css HTTP/1.1" 200 3431
+[2024-10-20 00:18:17,248] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 00:18:17,248] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 00:18:17,250] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 00:18:17,250] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 00:18:17,251] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 00:18:17,251] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 00:18:17,251] [django.server::log_message::161] [INFO] "GET /static/css/Toast.min.0479912dd9c5.css HTTP/1.1" 200 1213
+[2024-10-20 00:18:17,251] [django.server::log_message::161] [INFO] "GET /static/css/Toast.min.0479912dd9c5.css HTTP/1.1" 200 1213
+[2024-10-20 00:18:17,259] [django.server::log_message::161] [INFO] "GET /react-app/main.js?v=d9b816 HTTP/1.1" 200 1257211
+[2024-10-20 00:18:17,259] [django.server::log_message::161] [INFO] "GET /react-app/main.js?v=d9b816 HTTP/1.1" 200 1257211
+[2024-10-20 00:18:17,326] [django.server::log_message::161] [INFO] "GET /api/version HTTP/1.1" 200 880
+[2024-10-20 00:18:17,326] [django.server::log_message::161] [INFO] "GET /api/version HTTP/1.1" 200 880
+[2024-10-20 00:18:17,331] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 00:18:17,331] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 00:18:17,332] [django.server::log_message::161] [INFO] "GET /static/icons/logo.svg HTTP/1.1" 200 9254
+[2024-10-20 00:18:17,332] [django.server::log_message::161] [INFO] "GET /static/icons/logo.svg HTTP/1.1" 200 9254
+[2024-10-20 00:18:17,335] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 684
+[2024-10-20 00:18:17,335] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 684
+[2024-10-20 00:18:17,426] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 00:18:17,426] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 00:18:17,430] [django.server::log_message::161] [INFO] "GET /api/projects?ids=4%2C3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 712
+[2024-10-20 00:18:17,430] [django.server::log_message::161] [INFO] "GET /api/projects?ids=4%2C3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 712
+[2024-10-20 00:18:17,434] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 00:18:17,434] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 00:18:18,982] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 00:18:18,982] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 00:18:20,145] [django.server::log_message::161] [INFO] "GET /dm/main.css?v=d9b816 HTTP/1.1" 200 76923
+[2024-10-20 00:18:20,145] [django.server::log_message::161] [INFO] "GET /dm/main.css?v=d9b816 HTTP/1.1" 200 76923
+[2024-10-20 00:18:20,146] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 00:18:20,146] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 00:18:20,171] [django.server::log_message::161] [INFO] "GET /dm/main.js?v=d9b816 HTTP/1.1" 200 1628584
+[2024-10-20 00:18:20,171] [django.server::log_message::161] [INFO] "GET /dm/main.js?v=d9b816 HTTP/1.1" 200 1628584
+[2024-10-20 00:18:20,173] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.css?v=d9b816 HTTP/1.1" 200 2013014
+[2024-10-20 00:18:20,173] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.css?v=d9b816 HTTP/1.1" 200 2013014
+[2024-10-20 00:18:20,177] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.js?v=d9b816 HTTP/1.1" 200 3718612
+[2024-10-20 00:18:20,177] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.js?v=d9b816 HTTP/1.1" 200 3718612
+[2024-10-20 00:18:20,326] [django.server::log_message::161] [INFO] "GET /api/ml?project=2 HTTP/1.1" 200 2
+[2024-10-20 00:18:20,326] [django.server::log_message::161] [INFO] "GET /api/ml?project=2 HTTP/1.1" 200 2
+[2024-10-20 00:18:20,337] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=2 HTTP/1.1" 200 4241
+[2024-10-20 00:18:20,337] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=2 HTTP/1.1" 200 4241
+[2024-10-20 00:18:20,378] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=2 HTTP/1.1" 200 1001
+[2024-10-20 00:18:20,378] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=2 HTTP/1.1" 200 1001
+[2024-10-20 00:18:20,383] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=2 HTTP/1.1" 200 2375
+[2024-10-20 00:18:20,383] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=2 HTTP/1.1" 200 2375
+[2024-10-20 00:18:20,383] [django.server::log_message::161] [INFO] "GET /api/users?project=2 HTTP/1.1" 200 460
+[2024-10-20 00:18:20,383] [django.server::log_message::161] [INFO] "GET /api/users?project=2 HTTP/1.1" 200 460
+[2024-10-20 00:18:20,385] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=2 HTTP/1.1" 200 2079
+[2024-10-20 00:18:20,385] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=2 HTTP/1.1" 200 2079
+[2024-10-20 00:18:20,418] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=2&project=2 HTTP/1.1" 200 697
+[2024-10-20 00:18:20,418] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=2&project=2 HTTP/1.1" 200 697
+[2024-10-20 00:18:21,920] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54260)
+
+[2024-10-20 00:18:21,920] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54260)
+
+[2024-10-20 00:18:21,925] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 4785
+[2024-10-20 00:18:21,925] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 4785
+[2024-10-20 00:18:21,959] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54259)
+
+[2024-10-20 00:18:21,959] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54259)
+
+[2024-10-20 00:18:22,669] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 2593457
+[2024-10-20 00:18:22,669] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 2593457
+[2024-10-20 00:18:26,719] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 684
+[2024-10-20 00:18:26,719] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 684
+[2024-10-20 00:18:26,743] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:18:26,743] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:18:26,747] [django.server::log_message::161] [INFO] "GET /api/projects?ids=4%2C3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 712
+[2024-10-20 00:18:26,747] [django.server::log_message::161] [INFO] "GET /api/projects?ids=4%2C3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 712
+[2024-10-20 00:18:28,005] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:28,005] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:28,017] [django.server::log_message::161] [INFO] "GET /api/ml?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:28,017] [django.server::log_message::161] [INFO] "GET /api/ml?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:28,030] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=4 HTTP/1.1" 200 4254
+[2024-10-20 00:18:28,030] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=4 HTTP/1.1" 200 4254
+[2024-10-20 00:18:28,063] [django.server::log_message::161] [INFO] "GET /api/users?project=4 HTTP/1.1" 200 460
+[2024-10-20 00:18:28,063] [django.server::log_message::161] [INFO] "GET /api/users?project=4 HTTP/1.1" 200 460
+[2024-10-20 00:18:28,077] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=4 HTTP/1.1" 200 2079
+[2024-10-20 00:18:28,077] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=4 HTTP/1.1" 200 2079
+[2024-10-20 00:18:28,078] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=4 HTTP/1.1" 200 975
+[2024-10-20 00:18:28,078] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=4 HTTP/1.1" 200 975
+[2024-10-20 00:18:28,078] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=4 HTTP/1.1" 200 1401
+[2024-10-20 00:18:28,078] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=4 HTTP/1.1" 200 1401
+[2024-10-20 00:18:28,113] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=4&project=4 HTTP/1.1" 200 664
+[2024-10-20 00:18:28,113] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=4&project=4 HTTP/1.1" 200 664
+[2024-10-20 00:18:35,413] [django.server::log_message::161] [INFO] "GET /api/tasks/3?project=4 HTTP/1.1" 200 715
+[2024-10-20 00:18:35,413] [django.server::log_message::161] [INFO] "GET /api/tasks/3?project=4 HTTP/1.1" 200 715
+[2024-10-20 00:18:45,184] [django.server::log_message::161] [INFO] "GET /api/dm/project?interaction=refresh&project=4 HTTP/1.1" 200 1401
+[2024-10-20 00:18:45,184] [django.server::log_message::161] [INFO] "GET /api/dm/project?interaction=refresh&project=4 HTTP/1.1" 200 1401
+[2024-10-20 00:18:45,214] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=4&project=4 HTTP/1.1" 200 664
+[2024-10-20 00:18:45,214] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=4&project=4 HTTP/1.1" 200 664
+[2024-10-20 00:18:46,034] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:46,034] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,815] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,815] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,815] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,815] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,842] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:18:52,845] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:18:52,845] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,845] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,850] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,850] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,856] [django.server::log_message::161] [INFO] "POST /api/projects/4/validate HTTP/1.1" 200 42
+[2024-10-20 00:18:52,856] [django.server::log_message::161] [INFO] "POST /api/projects/4/validate HTTP/1.1" 200 42
+[2024-10-20 00:18:52,869] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,869] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,891] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,892] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,892] [django.server::log_message::161] [INFO] "GET /api/projects/4/summary HTTP/1.1" 200 203
+[2024-10-20 00:18:52,891] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:52,905] [django.server::log_message::161] [INFO] "POST /api/projects/4/sample-task HTTP/1.1" 200 18
+[2024-10-20 00:18:52,905] [django.server::log_message::161] [INFO] "POST /api/projects/4/sample-task HTTP/1.1" 200 18
+[2024-10-20 00:18:52,955] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:18:52,955] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:18:53,595] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:18:53,595] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:18:53,598] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:53,598] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:53,608] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:18:53,608] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:18:54,276] [django.server::log_message::161] [INFO] "GET /api/ml?project=4&include_static=true HTTP/1.1" 200 2
+[2024-10-20 00:18:54,276] [django.server::log_message::161] [INFO] "GET /api/ml?project=4&include_static=true HTTP/1.1" 200 2
+[2024-10-20 00:18:54,277] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:54,277] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:54,287] [django.server::log_message::161] [INFO] "GET /api/ml?project=4&include_static=true HTTP/1.1" 200 2
+[2024-10-20 00:18:54,287] [django.server::log_message::161] [INFO] "GET /api/ml?project=4&include_static=true HTTP/1.1" 200 2
+[2024-10-20 00:18:55,951] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:55,951] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:55,954] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:55,954] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:55,964] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:55,964] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:55,975] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:55,975] [django.server::log_message::161] [INFO] "GET /api/projects/4/model-versions?extended=true HTTP/1.1" 200 25
+[2024-10-20 00:18:56,607] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,607] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,618] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,618] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,624] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:56,624] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:56,636] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,636] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,637] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,637] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,654] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,654] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,656] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,656] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,670] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,670] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,670] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,670] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,683] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,683] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,687] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,687] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,702] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,702] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,703] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,703] [django.server::log_message::161] [INFO] "GET /api/storages?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:56,711] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,711] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,716] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:56,716] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:18:59,512] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,512] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,526] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:59,526] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:59,527] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:59,527] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:18:59,536] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,536] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,545] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:59,545] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:59,549] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,549] [django.server::log_message::161] [INFO] "GET /api/webhooks/info?organization-only=false HTTP/1.1" 200 1094
+[2024-10-20 00:18:59,555] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:18:59,555] [django.server::log_message::161] [INFO] "GET /api/webhooks?project=4 HTTP/1.1" 200 2
+[2024-10-20 00:19:00,110] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:19:00,110] [django.server::log_message::161] [INFO] "GET /api/projects/4 HTTP/1.1" 200 1217
+[2024-10-20 00:19:01,793] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:01,793] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:08,999] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:08,999] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:10,334] [django.server::log_message::161] [INFO] "DELETE /api/dm/views/reset HTTP/1.1" 204 0
+[2024-10-20 00:19:10,334] [django.server::log_message::161] [INFO] "DELETE /api/dm/views/reset HTTP/1.1" 204 0
+[2024-10-20 00:19:10,788] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:10,788] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:11,718] [django.server::log_message::161] [INFO] "DELETE /api/projects/4 HTTP/1.1" 204 0
+[2024-10-20 00:19:11,718] [django.server::log_message::161] [INFO] "DELETE /api/projects/4 HTTP/1.1" 204 0
+[2024-10-20 00:19:11,755] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 474
+[2024-10-20 00:19:11,755] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 474
+[2024-10-20 00:19:11,777] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:19:11,777] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:19:11,781] [django.server::log_message::161] [INFO] "GET /api/projects?ids=3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 501
+[2024-10-20 00:19:11,781] [django.server::log_message::161] [INFO] "GET /api/projects?ids=3%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 501
+[2024-10-20 00:19:14,479] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:14,479] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:14,492] [django.server::log_message::161] [INFO] "GET /api/ml?project=3 HTTP/1.1" 200 2
+[2024-10-20 00:19:14,492] [django.server::log_message::161] [INFO] "GET /api/ml?project=3 HTTP/1.1" 200 2
+[2024-10-20 00:19:14,505] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=3 HTTP/1.1" 200 4254
+[2024-10-20 00:19:14,505] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=3 HTTP/1.1" 200 4254
+[2024-10-20 00:19:14,552] [django.server::log_message::161] [INFO] "GET /api/users?project=3 HTTP/1.1" 200 460
+[2024-10-20 00:19:14,552] [django.server::log_message::161] [INFO] "GET /api/users?project=3 HTTP/1.1" 200 460
+[2024-10-20 00:19:14,553] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=3 HTTP/1.1" 200 2079
+[2024-10-20 00:19:14,553] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=3 HTTP/1.1" 200 2079
+[2024-10-20 00:19:14,556] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=3 HTTP/1.1" 200 975
+[2024-10-20 00:19:14,556] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=3 HTTP/1.1" 200 975
+[2024-10-20 00:19:14,556] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=3 HTTP/1.1" 200 1424
+[2024-10-20 00:19:14,556] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=3 HTTP/1.1" 200 1424
+[2024-10-20 00:19:14,590] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=3&project=3 HTTP/1.1" 200 737
+[2024-10-20 00:19:14,590] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=3&project=3 HTTP/1.1" 200 737
+[2024-10-20 00:19:38,598] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:38,598] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:43,843] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:43,843] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:43,859] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:43,859] [django.server::log_message::161] [INFO] "GET /api/projects/3 HTTP/1.1" 200 1240
+[2024-10-20 00:19:44,560] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:44,560] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:46,244] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:46,244] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:19:46,944] [django.server::log_message::161] [INFO] "DELETE /api/projects/3 HTTP/1.1" 204 0
+[2024-10-20 00:19:46,944] [django.server::log_message::161] [INFO] "DELETE /api/projects/3 HTTP/1.1" 204 0
+[2024-10-20 00:19:46,978] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 266
+[2024-10-20 00:19:46,978] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 266
+[2024-10-20 00:19:47,001] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:19:47,001] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 00:19:47,004] [django.server::log_message::161] [INFO] "GET /api/projects?ids=2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 265
+[2024-10-20 00:19:47,004] [django.server::log_message::161] [INFO] "GET /api/projects?ids=2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 265
+[2024-10-20 00:19:55,456] [django.server::log_message::161] [INFO] "GET /api/projects HTTP/1.1" 200 2243
+[2024-10-20 00:19:55,456] [django.server::log_message::161] [INFO] "GET /api/projects HTTP/1.1" 200 2243
+[2024-10-20 00:19:55,481] [django.server::log_message::161] [INFO] "POST /api/projects HTTP/1.1" 201 1241
+[2024-10-20 00:19:55,481] [django.server::log_message::161] [INFO] "POST /api/projects HTTP/1.1" 201 1241
+[2024-10-20 00:19:55,490] [django.server::log_message::161] [INFO] "GET /api/projects/5/file-uploads HTTP/1.1" 200 2
+[2024-10-20 00:19:55,490] [django.server::log_message::161] [INFO] "GET /api/projects/5/file-uploads HTTP/1.1" 200 2
+[2024-10-20 00:20:09,712] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:20:09,712] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:20:09,752] [django.server::log_message::161] [INFO] "GET /static/templates/object-detection-with-bounding-boxes.png HTTP/1.1" 200 116076
+[2024-10-20 00:20:09,752] [django.server::log_message::161] [INFO] "GET /static/templates/object-detection-with-bounding-boxes.png HTTP/1.1" 200 116076
+[2024-10-20 00:20:09,753] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-masks.png HTTP/1.1" 200 125386
+[2024-10-20 00:20:09,753] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-masks.png HTTP/1.1" 200 125386
+[2024-10-20 00:20:09,753] [django.server::log_message::161] [INFO] "GET /static/templates/image-classification.png HTTP/1.1" 200 118704
+[2024-10-20 00:20:09,753] [django.server::log_message::161] [INFO] "GET /static/templates/image-classification.png HTTP/1.1" 200 118704
+[2024-10-20 00:20:09,754] [django.server::log_message::161] [INFO] "GET /static/templates/keypoints.png HTTP/1.1" 200 152969
+[2024-10-20 00:20:09,754] [django.server::log_message::161] [INFO] "GET /static/templates/keypoints.png HTTP/1.1" 200 152969
+[2024-10-20 00:20:09,754] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-polygons.png HTTP/1.1" 200 125827
+[2024-10-20 00:20:09,754] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-polygons.png HTTP/1.1" 200 125827
+[2024-10-20 00:20:09,755] [django.server::log_message::161] [INFO] "GET /static/templates/inventory-tracking.png HTTP/1.1" 200 378386
+[2024-10-20 00:20:09,755] [django.server::log_message::161] [INFO] "GET /static/templates/inventory-tracking.png HTTP/1.1" 200 378386
+[2024-10-20 00:20:09,774] [django.server::log_message::161] [INFO] "GET /static/templates/visual-genome.png HTTP/1.1" 200 324792
+[2024-10-20 00:20:09,774] [django.server::log_message::161] [INFO] "GET /static/templates/visual-genome.png HTTP/1.1" 200 324792
+[2024-10-20 00:20:09,778] [django.server::log_message::161] [INFO] "GET /static/templates/multipage.png HTTP/1.1" 200 283217
+[2024-10-20 00:20:09,778] [django.server::log_message::161] [INFO] "GET /static/templates/multipage.png HTTP/1.1" 200 283217
+[2024-10-20 00:20:09,778] [django.server::log_message::161] [INFO] "GET /static/templates/visual-question-answering.png HTTP/1.1" 200 40961
+[2024-10-20 00:20:09,778] [django.server::log_message::161] [INFO] "GET /static/templates/visual-question-answering.png HTTP/1.1" 200 40961
+[2024-10-20 00:20:09,779] [django.server::log_message::161] [INFO] "GET /static/templates/optical-character-recognition.png HTTP/1.1" 200 29234
+[2024-10-20 00:20:09,779] [django.server::log_message::161] [INFO] "GET /static/templates/optical-character-recognition.png HTTP/1.1" 200 29234
+[2024-10-20 00:20:09,781] [django.server::log_message::161] [INFO] "GET /static/templates/image-captioning.png HTTP/1.1" 200 153283
+[2024-10-20 00:20:09,781] [django.server::log_message::161] [INFO] "GET /static/templates/image-captioning.png HTTP/1.1" 200 153283
+[2024-10-20 00:20:11,782] [django.server::log_message::161] [INFO] "GET /static/templates/video-classification.png HTTP/1.1" 200 70928
+[2024-10-20 00:20:11,782] [django.server::log_message::161] [INFO] "GET /static/templates/video-classification.png HTTP/1.1" 200 70928
+[2024-10-20 00:20:11,782] [django.server::log_message::161] [INFO] "GET /static/templates/video-timeline-segmentation.png HTTP/1.1" 200 57601
+[2024-10-20 00:20:11,782] [django.server::log_message::161] [INFO] "GET /static/templates/video-timeline-segmentation.png HTTP/1.1" 200 57601
+[2024-10-20 00:20:12,361] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:20:12,361] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:20:12,367] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:20:12,367] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:20:12,382] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:20:12,382] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:20:12,433] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54682)
+
+[2024-10-20 00:20:12,433] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 54682)
+
+[2024-10-20 00:20:12,438] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:20:12,438] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:20:12,538] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 2782603
+[2024-10-20 00:20:12,538] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 2782603
+[2024-10-20 00:20:17,003] [django.server::log_message::161] [INFO] "POST /api/projects/5/reimport HTTP/1.1" 200 129
+[2024-10-20 00:20:17,003] [django.server::log_message::161] [INFO] "POST /api/projects/5/reimport HTTP/1.1" 200 129
+[2024-10-20 00:20:17,020] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:20:17,020] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:20:17,038] [django.server::log_message::161] [INFO] "PATCH /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:17,038] [django.server::log_message::161] [INFO] "PATCH /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:17,078] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:17,078] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:17,088] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:17,088] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:17,099] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:20:17,099] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:20:17,136] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:17,136] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:17,137] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:20:17,137] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:20:17,140] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:20:17,140] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:20:17,143] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:20:17,143] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:20:17,153] [django.server::log_message::161] [INFO] "POST /api/dm/views?tabID=0&project=5 HTTP/1.1" 201 973
+[2024-10-20 00:20:17,153] [django.server::log_message::161] [INFO] "POST /api/dm/views?tabID=0&project=5 HTTP/1.1" 201 973
+[2024-10-20 00:20:17,167] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:17,167] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:17,189] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:17,189] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:17,202] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:17,202] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 66
+[2024-10-20 00:20:20,467] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:20,467] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:22,292] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,292] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,298] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,298] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,304] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:22,304] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:22,310] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,310] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,318] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,318] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,331] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,331] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,342] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,342] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,347] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:22,347] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:20:22,424] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,424] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,430] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,430] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,438] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,438] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,445] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,445] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,465] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,465] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,478] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,478] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,480] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,480] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,496] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,496] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,503] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,503] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,514] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,514] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,515] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,515] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,525] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,525] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,535] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,535] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,543] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,543] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:20:22,545] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,545] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,551] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:22,551] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:20:34,373] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:20:34,373] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:20:34,406] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 00:20:34,406] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 00:20:37,412] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 00:20:37,412] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 00:23:51,983] [core.utils.common::custom_exception_handler::91] [ERROR] 03c586a4-45dd-4752-878c-b29605795c05 {'non_field_errors': [ErrorDetail(string="[ErrorDetail(string='Path /Users/nullptr/Downloads/draft_videos must start with LOCAL_FILES_DOCUMENT_ROOT=/Users/nullptr/Downloads/draft_videos and must be a child, e.g.: /Users/nullptr/Downloads/draft_videos/abc', code='invalid')]", code='invalid')]}
+Traceback (most recent call last):
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/generics.py", line 190, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/io_storages/api.py", line 163, in create
+    serializer.is_valid(raise_exception=True)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/serializers.py", line 235, in is_valid
+    raise ValidationError(self.errors)
+rest_framework.exceptions.ValidationError: {'non_field_errors': [ErrorDetail(string="[ErrorDetail(string='Path /Users/nullptr/Downloads/draft_videos must start with LOCAL_FILES_DOCUMENT_ROOT=/Users/nullptr/Downloads/draft_videos and must be a child, e.g.: /Users/nullptr/Downloads/draft_videos/abc', code='invalid')]", code='invalid')]}
+[2024-10-20 00:23:52,099] [django.request::log_response::224] [WARNING] Bad Request: /api/storages/localfiles/validate
+[2024-10-20 00:23:52,099] [django.request::log_response::224] [WARNING] Bad Request: /api/storages/localfiles/validate
+[2024-10-20 00:23:52,099] [django.server::log_message::161] [WARNING] "POST /api/storages/localfiles/validate HTTP/1.1" 400 403
+[2024-10-20 00:23:52,099] [django.server::log_message::161] [WARNING] "POST /api/storages/localfiles/validate HTTP/1.1" 400 403
+[2024-10-20 00:24:58,344] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 00:24:58,344] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 00:25:00,798] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles?project=5 HTTP/1.1" 201 353
+[2024-10-20 00:25:00,798] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles?project=5 HTTP/1.1" 201 353
+[2024-10-20 00:25:00,822] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 355
+[2024-10-20 00:25:00,822] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 355
+[2024-10-20 00:25:00,831] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:25:00,831] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 00:25:02,669] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:25:02,669] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:25:02,704] [django.server::log_message::161] [INFO] "GET /api/storages/export/s3/form HTTP/1.1" 200 1155
+[2024-10-20 00:25:02,704] [django.server::log_message::161] [INFO] "GET /api/storages/export/s3/form HTTP/1.1" 200 1155
+[2024-10-20 00:25:04,841] [django.server::log_message::161] [INFO] "GET /api/storages/export/localfiles/form HTTP/1.1" 200 161
+[2024-10-20 00:25:04,841] [django.server::log_message::161] [INFO] "GET /api/storages/export/localfiles/form HTTP/1.1" 200 161
+[2024-10-20 00:25:26,701] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 00:25:26,701] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 00:25:27,923] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles?project=5 HTTP/1.1" 201 438
+[2024-10-20 00:25:27,923] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles?project=5 HTTP/1.1" 201 438
+[2024-10-20 00:25:27,944] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 00:25:27,944] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 00:25:27,951] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:25:27,951] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 00:26:50,404] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/1/sync HTTP/1.1" 200 629
+[2024-10-20 00:26:50,404] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/1/sync HTTP/1.1" 200 629
+[2024-10-20 00:26:51,933] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles/2/sync HTTP/1.1" 200 663
+[2024-10-20 00:26:51,933] [django.server::log_message::161] [INFO] "POST /api/storages/export/localfiles/2/sync HTTP/1.1" 200 663
+[2024-10-20 00:30:35,597] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:30:35,597] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:30:35,599] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:30:35,599] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:30:35,622] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:30:35,622] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:30:35,623] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:30:35,623] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:30:35,669] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:30:35,669] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:30:35,670] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:30:35,670] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:30:35,676] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:30:35,676] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:30:35,677] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:30:35,677] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:30:35,719] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:30:35,719] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:30:40,596] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56499)
+
+[2024-10-20 00:30:40,596] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56499)
+
+[2024-10-20 00:30:44,798] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:30:44,798] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:30:44,828] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+[2024-10-20 00:30:44,828] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/pagination.py:200: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'labels_manager.models.LabelLink'> QuerySet.
+  paginator = self.django_paginator_class(queryset, page_size)
+[2024-10-20 00:30:44,838] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:30:44,838] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:30:44,855] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:30:44,855] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:30:44,914] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:30:44,914] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:30:44,947] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56485)
+
+[2024-10-20 00:30:44,947] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56485)
+
+[2024-10-20 00:31:07,965] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56498)
+
+[2024-10-20 00:31:07,965] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56498)
+
+[2024-10-20 00:31:07,977] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:07,977] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:10,452] [django.server::log_message::161] [INFO] "GET /api/projects/5/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:31:10,452] [django.server::log_message::161] [INFO] "GET /api/projects/5/model-versions?extended=true&include_live_models=true HTTP/1.1" 200 23
+[2024-10-20 00:31:10,455] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:10,455] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:10,472] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:10,472] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:11,111] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,111] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,125] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:11,126] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:11,132] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:11,132] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:11,144] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:11,144] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:11,149] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,149] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,174] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:11,174] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:11,176] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,176] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,180] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:11,180] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:11,197] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,197] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:11,219] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56654)
+
+[2024-10-20 00:31:11,219] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56654)
+
+[2024-10-20 00:31:11,226] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:31:11,226] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:31:11,246] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:11,246] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:11,293] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 3063808
+[2024-10-20 00:31:11,293] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 3063808
+[2024-10-20 00:31:11,314] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:11,314] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:14,985] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:14,985] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:15,485] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:15,485] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:15,491] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:15,491] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:15,502] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 108
+[2024-10-20 00:31:15,502] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 108
+[2024-10-20 00:31:15,588] [django.server::log_message::161] [INFO] "GET /projects/5/settings/undefined$ HTTP/1.1" 200 30664
+[2024-10-20 00:31:15,588] [django.server::log_message::161] [INFO] "GET /projects/5/settings/undefined$ HTTP/1.1" 200 30664
+[2024-10-20 00:31:19,263] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:31:19,263] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 00:31:23,874] [django.server::log_message::161] [INFO] "GET /projects/5/settings/ HTTP/1.1" 200 30664
+[2024-10-20 00:31:23,874] [django.server::log_message::161] [INFO] "GET /projects/5/settings/ HTTP/1.1" 200 30664
+[2024-10-20 00:31:23,885] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:23,885] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:23,888] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 00:31:23,888] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 00:31:23,899] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 00:31:23,899] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 00:31:23,908] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 00:31:23,908] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 00:31:28,440] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:31:28,440] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:31:28,446] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:28,446] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:28,464] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:31:28,464] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:31:28,464] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:28,464] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:28,496] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:31:28,496] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:31:28,507] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:31:28,507] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 2494
+[2024-10-20 00:31:28,508] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:31:28,508] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:31:28,508] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:31:28,508] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:31:28,553] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:31:28,553] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:31:30,259] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:31:30,259] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:31:30,291] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:31:30,291] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:31:30,301] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+[2024-10-20 00:31:30,301] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+[2024-10-20 00:31:30,330] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:31:30,330] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:31:30,379] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:31:30,379] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:31:30,436] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56769)
+
+[2024-10-20 00:31:30,436] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56769)
+
+[2024-10-20 00:31:45,473] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56781)
+
+[2024-10-20 00:31:45,473] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56781)
+
+[2024-10-20 00:31:48,472] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:48,472] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,490] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,490] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,496] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:50,498] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:50,501] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,501] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,528] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:50,528] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:50,532] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,532] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,536] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,536] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,555] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:50,555] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:50,566] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,566] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 203
+[2024-10-20 00:31:50,576] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,576] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:50,593] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:31:50,593] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 00:31:50,596] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56870)
+
+[2024-10-20 00:31:50,596] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56870)
+
+[2024-10-20 00:31:50,618] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:50,618] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 00:31:52,468] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:52,468] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:52,967] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:52,968] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:52,976] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:52,976] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:52,993] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:52,993] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:53,056] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 688088
+[2024-10-20 00:31:53,056] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 688088
+[2024-10-20 00:31:53,200] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:53,200] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:53,710] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:53,711] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:53,719] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:53,719] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:31:53,732] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:53,732] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:31:54,330] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:54,330] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:31:54,824] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:54,824] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:31:54,826] [core.utils.common::custom_exception_handler::91] [ERROR] 0829c4b3-5d82-40e8-b353-3d746c435299 [ErrorDetail(string="Validation failed on : 'Label' is a required property", code='invalid')]
+Traceback (most recent call last):
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/core/label_config.py", line 95, in validate_label_config
+    jsonschema.validate(config, _LABEL_CONFIG_SCHEMA_DATA)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/jsonschema/validators.py", line 934, in validate
+    raise error
+jsonschema.exceptions.ValidationError: 'Label' is a required property
+
+Failed validating 'required' in schema[0]:
+    {'required': ['@name', '@toName', 'Label']}
+
+On instance:
+    OrderedDict([('@name', 'videoLabels'),
+                 ('@toName', 'video'),
+                 ('@allowEmpty', True)])
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/api.py", line 558, in post
+    project.validate_config(label_config, strict=True)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/models.py", line 530, in validate_config
+    self.validate_label_config(config_string)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/models.py", line 527, in validate_label_config
+    validate_label_config(config_string)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/core/label_config.py", line 103, in validate_label_config
+    raise LabelStudioValidationErrorSentryIgnored(error_message)
+label_studio.core.utils.exceptions.LabelStudioValidationErrorSentryIgnored: [ErrorDetail(string="Validation failed on : 'Label' is a required property", code='invalid')]
+[2024-10-20 00:31:54,834] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 00:31:54,834] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 00:31:54,834] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 225
+[2024-10-20 00:31:54,834] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 225
+[2024-10-20 00:32:02,020] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:02,020] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:02,515] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:02,515] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:02,520] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:02,520] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:02,531] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:02,531] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:23,481] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:23,481] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:23,993] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:23,993] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:24,000] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:24,000] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:24,012] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:24,012] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:30,110] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:30,110] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:30,602] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:30,603] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:30,610] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:30,610] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:30,623] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:30,623] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:33,046] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:33,046] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:33,540] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:33,541] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:33,547] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:33,547] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:33,561] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:33,561] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:33,939] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:33,939] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:33,955] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:33,955] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:34,452] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:34,453] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:34,460] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:34,460] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:34,472] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:34,472] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:41,264] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:41,264] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:41,762] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:41,763] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:41,771] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:41,771] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:41,786] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:41,786] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:44,394] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,394] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,563] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,563] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,591] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,591] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,721] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,721] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,741] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,741] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,762] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,762] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,787] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,787] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,819] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,819] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,848] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,848] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,960] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:44,960] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:45,467] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:45,467] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:45,475] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:45,475] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:45,490] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:45,490] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:45,733] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:45,733] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:32:46,243] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:46,244] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:32:46,252] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:46,252] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:32:46,265] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:32:46,265] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:33:06,228] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:33:06,228] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2310
+[2024-10-20 00:33:06,724] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:33:06,724] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:33:06,729] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:33:06,729] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 00:33:06,739] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:33:06,739] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 00:33:12,487] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:33:12,487] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 00:33:12,502] [django.server::log_message::161] [INFO] "PATCH /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:12,502] [django.server::log_message::161] [INFO] "PATCH /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:14,282] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:14,282] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:15,512] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:33:15,512] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:33:15,516] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:15,516] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:15,538] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:15,538] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 00:33:15,538] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:33:15,538] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 00:33:15,576] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:33:15,576] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 00:33:15,583] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:33:15,583] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 00:33:15,584] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 00:33:15,584] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 00:33:15,585] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:33:15,585] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 00:33:15,629] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:33:15,629] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7285
+[2024-10-20 00:33:16,524] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:33:16,524] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 00:33:16,558] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:33:16,558] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 00:33:16,561] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+[2024-10-20 00:33:16,561] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 983
+[2024-10-20 00:33:16,580] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:33:16,580] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:33:16,642] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:33:16,642] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 00:33:16,678] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56780)
+
+[2024-10-20 00:33:16,678] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56780)
+
+[2024-10-20 00:33:31,753] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56864)
+
+[2024-10-20 00:33:31,753] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56864)
+
+[2024-10-20 00:33:32,387] [django.server::log_message::161] [INFO] "POST /api/tasks/4/drafts?project=5 HTTP/1.1" 201 599
+[2024-10-20 00:33:32,387] [django.server::log_message::161] [INFO] "POST /api/tasks/4/drafts?project=5 HTTP/1.1" 201 599
+[2024-10-20 00:33:41,426] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1257
+[2024-10-20 00:33:41,426] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1257
+[2024-10-20 00:33:48,880] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1276
+[2024-10-20 00:33:48,880] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1276
+[2024-10-20 00:33:48,997] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56866)
+
+[2024-10-20 00:33:48,997] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56866)
+
+[2024-10-20 00:34:02,243] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1276
+[2024-10-20 00:34:02,243] [django.server::log_message::161] [INFO] "PATCH /api/drafts/5?project=5 HTTP/1.1" 200 1276
+[2024-10-20 00:34:04,999] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56544)
+
+[2024-10-20 00:34:04,999] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 56544)
+
+[2024-10-20 02:48:05,905] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 59309)
+
+[2024-10-20 02:48:05,905] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 59309)
+
+[2024-10-20 02:48:05,929] [django.server::log_message::161] [INFO] "POST /api/tasks/4/annotations?project=5 HTTP/1.1" 201 1441
+[2024-10-20 02:48:05,929] [django.server::log_message::161] [INFO] "POST /api/tasks/4/annotations?project=5 HTTP/1.1" 201 1441
+[2024-10-20 02:48:05,963] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 2996
+[2024-10-20 02:48:05,963] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 2996
+[2024-10-20 02:48:05,977] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 02:48:05,977] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 02:48:06,042] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:06,042] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:06,076] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 59989)
+
+[2024-10-20 02:48:06,076] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 59989)
+
+[2024-10-20 02:48:06,108] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60016)
+
+[2024-10-20 02:48:06,108] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60016)
+
+[2024-10-20 02:48:09,335] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60029)
+
+[2024-10-20 02:48:09,335] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60029)
+
+[2024-10-20 02:48:09,353] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:48:09,353] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:48:09,355] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:09,355] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:09,373] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 02:48:09,373] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 02:48:09,376] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:09,376] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:09,404] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 02:48:09,404] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 02:48:09,410] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 02:48:09,410] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 02:48:09,418] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 02:48:09,418] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 02:48:09,418] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 02:48:09,418] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 02:48:09,463] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 02:48:09,463] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 02:48:14,643] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:48:14,643] [django.server::log_message::161] [INFO] "GET /api/projects/5/label-stream-history?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:48:14,670] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 02:48:14,670] [django.server::log_message::161] [INFO] "GET /api/label_links?project=5&expand=label HTTP/1.1" 200 52
+[2024-10-20 02:48:14,684] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 2996
+[2024-10-20 02:48:14,684] [django.server::log_message::161] [INFO] "GET /api/tasks/4?project=5 HTTP/1.1" 200 2996
+[2024-10-20 02:48:14,691] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:14,691] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:14,774] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:14,774] [django.server::log_message::161] [INFO] "GET /data/local-files/?d=draft_1/3G%20FCAW%20WELDER%20TESTING%20%28BION%20GROUP%20-%20U.A.E%207.3.2016%29%23vietnamwelder%236gwelder%20%233gwelder%23weldingcenter%20-%2001.mp4 HTTP/1.1" 206 1
+[2024-10-20 02:48:21,771] [django.server::log_message::161] [INFO] "GET /api/projects/5/export/formats HTTP/1.1" 200 3429
+[2024-10-20 02:48:21,771] [django.server::log_message::161] [INFO] "GET /api/projects/5/export/formats HTTP/1.1" 200 3429
+[2024-10-20 02:48:21,775] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:21,775] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:48:21,775] [django.server::log_message::161] [INFO] "GET /api/projects/5/export/files HTTP/1.1" 200 19
+[2024-10-20 02:48:21,775] [django.server::log_message::161] [INFO] "GET /api/projects/5/export/files HTTP/1.1" 200 19
+[2024-10-20 02:49:02,980] [django.server::log_message::161] [INFO] "GET /api/projects/5/export?exportType=YOLO_OBB HTTP/1.1" 200 147373094
+[2024-10-20 02:49:02,980] [django.server::log_message::161] [INFO] "GET /api/projects/5/export?exportType=YOLO_OBB HTTP/1.1" 200 147373094
+[2024-10-20 02:49:41,573] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:49:41,573] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:53:21,654] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 02:53:21,654] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 02:53:21,779] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 02:53:21,779] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 02:53:21,848] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 02:53:21,848] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 02:53:23,509] [django.server::log_message::161] [INFO] "GET /api/ml?project=2 HTTP/1.1" 200 2
+[2024-10-20 02:53:23,509] [django.server::log_message::161] [INFO] "GET /api/ml?project=2 HTTP/1.1" 200 2
+[2024-10-20 02:53:23,511] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:53:23,511] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:53:23,520] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=2 HTTP/1.1" 200 4241
+[2024-10-20 02:53:23,520] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=2 HTTP/1.1" 200 4241
+[2024-10-20 02:53:23,558] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=2 HTTP/1.1" 200 2079
+[2024-10-20 02:53:23,558] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=2 HTTP/1.1" 200 2079
+[2024-10-20 02:53:23,561] [django.server::log_message::161] [INFO] "GET /api/users?project=2 HTTP/1.1" 200 460
+[2024-10-20 02:53:23,561] [django.server::log_message::161] [INFO] "GET /api/users?project=2 HTTP/1.1" 200 460
+[2024-10-20 02:53:23,565] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=2 HTTP/1.1" 200 1001
+[2024-10-20 02:53:23,565] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=2 HTTP/1.1" 200 1001
+[2024-10-20 02:53:23,566] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=2 HTTP/1.1" 200 2375
+[2024-10-20 02:53:23,566] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=2 HTTP/1.1" 200 2375
+[2024-10-20 02:53:23,641] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=2&project=2 HTTP/1.1" 200 697
+[2024-10-20 02:53:23,641] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=2&project=2 HTTP/1.1" 200 697
+[2024-10-20 02:53:26,644] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60054)
+
+[2024-10-20 02:53:26,644] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60054)
+
+[2024-10-20 02:53:26,654] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 4785
+[2024-10-20 02:53:26,654] [django.server::log_message::161] [INFO] "GET /data/upload/2/2fc890f3-test_1.mp4 HTTP/1.1" 206 4785
+[2024-10-20 02:53:26,674] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61329)
+
+[2024-10-20 02:53:26,674] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61329)
+
+[2024-10-20 02:53:26,686] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60049)
+
+[2024-10-20 02:53:26,686] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 60049)
+
+[2024-10-20 02:53:26,705] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61328)
+
+[2024-10-20 02:53:26,705] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61328)
+
+[2024-10-20 02:53:31,307] [django.server::log_message::161] [INFO] "GET /api/projects/2/export/formats HTTP/1.1" 200 3429
+[2024-10-20 02:53:31,307] [django.server::log_message::161] [INFO] "GET /api/projects/2/export/formats HTTP/1.1" 200 3429
+[2024-10-20 02:53:31,307] [django.server::log_message::161] [INFO] "GET /api/projects/2/export/files HTTP/1.1" 200 19
+[2024-10-20 02:53:31,307] [django.server::log_message::161] [INFO] "GET /api/projects/2/export/files HTTP/1.1" 200 19
+[2024-10-20 02:53:31,311] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:53:31,311] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:53:42,173] [django.server::log_message::161] [INFO] "GET /api/projects/2/export?exportType=JSON HTTP/1.1" 200 20170
+[2024-10-20 02:53:42,173] [django.server::log_message::161] [INFO] "GET /api/projects/2/export?exportType=JSON HTTP/1.1" 200 20170
+[2024-10-20 02:53:58,347] [django.server::log_message::161] [INFO] "GET /api/projects/2/export?exportType=YOLO_OBB HTTP/1.1" 200 3708948
+[2024-10-20 02:53:58,347] [django.server::log_message::161] [INFO] "GET /api/projects/2/export?exportType=YOLO_OBB HTTP/1.1" 200 3708948
+[2024-10-20 02:54:20,254] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:54:20,254] [django.server::log_message::161] [INFO] "GET /api/projects/2 HTTP/1.1" 200 2191
+[2024-10-20 02:54:21,605] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 02:54:21,605] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 02:54:21,644] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 02:54:21,644] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 02:54:21,692] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 02:54:21,692] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 02:54:22,440] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:54:22,440] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 02:54:22,447] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:22,447] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:22,463] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 02:54:22,463] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 02:54:22,581] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 02:54:22,581] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 02:54:22,581] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 02:54:22,581] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 02:54:22,588] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 02:54:22,588] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 02:54:22,590] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 02:54:22,590] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 02:54:22,770] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 02:54:22,770] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 02:54:25,407] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:25,407] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:26,933] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,934] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,945] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,948] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,948] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:26,948] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:26,950] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,952] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:26,957] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 02:54:26,957] [django.server::log_message::161] [INFO] "POST /api/projects/5/validate HTTP/1.1" 200 42
+[2024-10-20 02:54:26,960] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:26,960] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:26,980] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:26,980] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:26,993] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:26,993] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:26,993] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 02:54:26,993] [django.server::log_message::161] [INFO] "POST /api/projects/5/sample-task HTTP/1.1" 200 60
+[2024-10-20 02:54:27,039] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:27,039] [django.server::log_message::161] [INFO] "GET /api/projects/5/summary HTTP/1.1" 200 258
+[2024-10-20 02:54:27,045] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:27,045] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:27,053] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61376)
+
+[2024-10-20 02:54:27,053] [django.server::handle_error::75] [INFO] - Broken pipe from ('127.0.0.1', 61376)
+
+[2024-10-20 02:54:27,061] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 02:54:27,061] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 65496
+[2024-10-20 02:54:27,094] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 3014656
+[2024-10-20 02:54:27,094] [django.server::log_message::161] [INFO] "GET /static/samples/opossum_snow.mp4 HTTP/1.1" 206 3014656
+[2024-10-20 02:54:27,126] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 02:54:27,126] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 02:54:28,044] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 02:54:28,044] [django.server::log_message::161] [INFO] "GET /api/templates HTTP/1.1" 200 73917
+[2024-10-20 02:54:28,077] [django.server::log_message::161] [INFO] "GET /static/templates/object-detection-with-bounding-boxes.png HTTP/1.1" 200 116076
+[2024-10-20 02:54:28,077] [django.server::log_message::161] [INFO] "GET /static/templates/object-detection-with-bounding-boxes.png HTTP/1.1" 200 116076
+[2024-10-20 02:54:28,078] [django.server::log_message::161] [INFO] "GET /static/templates/image-classification.png HTTP/1.1" 200 118704
+[2024-10-20 02:54:28,078] [django.server::log_message::161] [INFO] "GET /static/templates/image-classification.png HTTP/1.1" 200 118704
+[2024-10-20 02:54:28,079] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-polygons.png HTTP/1.1" 200 125827
+[2024-10-20 02:54:28,079] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-polygons.png HTTP/1.1" 200 125827
+[2024-10-20 02:54:28,079] [django.server::log_message::161] [INFO] "GET /static/templates/keypoints.png HTTP/1.1" 200 152969
+[2024-10-20 02:54:28,079] [django.server::log_message::161] [INFO] "GET /static/templates/keypoints.png HTTP/1.1" 200 152969
+[2024-10-20 02:54:28,080] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-masks.png HTTP/1.1" 200 125386
+[2024-10-20 02:54:28,080] [django.server::log_message::161] [INFO] "GET /static/templates/semantic-segmentation-with-masks.png HTTP/1.1" 200 125386
+[2024-10-20 02:54:28,081] [django.server::log_message::161] [INFO] "GET /static/templates/inventory-tracking.png HTTP/1.1" 200 378386
+[2024-10-20 02:54:28,081] [django.server::log_message::161] [INFO] "GET /static/templates/inventory-tracking.png HTTP/1.1" 200 378386
+[2024-10-20 02:54:28,100] [django.server::log_message::161] [INFO] "GET /static/templates/optical-character-recognition.png HTTP/1.1" 200 29234
+[2024-10-20 02:54:28,100] [django.server::log_message::161] [INFO] "GET /static/templates/optical-character-recognition.png HTTP/1.1" 200 29234
+[2024-10-20 02:54:28,102] [django.server::log_message::161] [INFO] "GET /static/templates/image-captioning.png HTTP/1.1" 200 153283
+[2024-10-20 02:54:28,102] [django.server::log_message::161] [INFO] "GET /static/templates/image-captioning.png HTTP/1.1" 200 153283
+[2024-10-20 02:54:28,105] [django.server::log_message::161] [INFO] "GET /static/templates/visual-question-answering.png HTTP/1.1" 200 40961
+[2024-10-20 02:54:28,105] [django.server::log_message::161] [INFO] "GET /static/templates/visual-question-answering.png HTTP/1.1" 200 40961
+[2024-10-20 02:54:28,106] [django.server::log_message::161] [INFO] "GET /static/templates/multipage.png HTTP/1.1" 200 283217
+[2024-10-20 02:54:28,106] [django.server::log_message::161] [INFO] "GET /static/templates/multipage.png HTTP/1.1" 200 283217
+[2024-10-20 02:54:28,107] [django.server::log_message::161] [INFO] "GET /static/templates/visual-genome.png HTTP/1.1" 200 324792
+[2024-10-20 02:54:28,107] [django.server::log_message::161] [INFO] "GET /static/templates/visual-genome.png HTTP/1.1" 200 324792
+[2024-10-20 02:54:30,154] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:30,154] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:30,170] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:30,170] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:30,173] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:30,173] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:30,173] [core.utils.common::custom_exception_handler::91] [ERROR] a8345b29-3621-4199-aee0-b1b0521680d6 [ErrorDetail(string='Created annotations are incompatible with provided labeling schema, we found:\n3 with from_name=box, to_name=video, type=videorectangle', code='invalid')]
+Traceback (most recent call last):
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/api.py", line 558, in post
+    project.validate_config(label_config, strict=True)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/models.py", line 587, in validate_config
+    raise LabelStudioValidationErrorSentryIgnored(
+core.utils.exceptions.LabelStudioValidationErrorSentryIgnored: [ErrorDetail(string='Created annotations are incompatible with provided labeling schema, we found:\n3 with from_name=box, to_name=video, type=videorectangle', code='invalid')]
+[2024-10-20 02:54:30,179] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 02:54:30,179] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 02:54:30,182] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 307
+[2024-10-20 02:54:30,182] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 307
+[2024-10-20 02:54:33,686] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:33,686] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 02:54:34,192] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:34,192] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:34,197] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:34,197] [core.label_config::parse_config::52] [WARNING] Using deprecated method - switch to label_studio.tools.label_config.parse_config!
+[2024-10-20 02:54:34,198] [core.utils.common::custom_exception_handler::91] [ERROR] 9e8ac86d-9edc-4eca-912e-da0ecad0a288 [ErrorDetail(string='Created annotations are incompatible with provided labeling schema, we found:\n3 with from_name=box, to_name=video, type=videorectangle', code='invalid')]
+Traceback (most recent call last):
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/django/utils/decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/api.py", line 558, in post
+    project.validate_config(label_config, strict=True)
+  File "/Users/nullptr/anaconda3/envs/label-studio/lib/python3.12/site-packages/label_studio/projects/models.py", line 587, in validate_config
+    raise LabelStudioValidationErrorSentryIgnored(
+core.utils.exceptions.LabelStudioValidationErrorSentryIgnored: [ErrorDetail(string='Created annotations are incompatible with provided labeling schema, we found:\n3 with from_name=box, to_name=video, type=videorectangle', code='invalid')]
+[2024-10-20 02:54:34,201] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 02:54:34,201] [django.request::log_response::224] [WARNING] Bad Request: /api/projects/5/validate/
+[2024-10-20 02:54:34,202] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 307
+[2024-10-20 02:54:34,202] [django.server::log_message::161] [WARNING] "POST /api/projects/5/validate HTTP/1.1" 400 307
+[2024-10-20 03:10:26,581] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:10:26,581] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:10:27,870] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 03:10:27,870] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 03:10:27,886] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 03:10:27,886] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 03:10:27,891] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 03:10:27,891] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 03:10:27,933] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 03:10:27,933] [django.server::log_message::161] [INFO] "GET /projects HTTP/1.1" 200 30664
+[2024-10-20 03:10:28,118] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 03:10:28,118] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 03:10:28,129] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 03:10:28,129] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 03:10:28,138] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 03:10:28,138] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 03:10:29,487] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 03:10:29,487] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 03:10:29,489] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:29,489] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:29,500] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 03:10:29,500] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 03:10:29,540] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 03:10:29,540] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 03:10:29,541] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 03:10:29,541] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 03:10:29,542] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 03:10:29,542] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 03:10:29,542] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 03:10:29,542] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 03:10:29,628] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 03:10:29,628] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 03:10:53,796] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:53,796] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:55,265] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,265] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,275] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,275] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,293] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:55,293] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:55,299] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,299] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,308] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,308] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,327] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,327] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,329] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:55,329] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 03:10:55,342] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,342] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,349] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,349] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,360] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,360] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,362] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,362] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,374] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,374] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,390] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,390] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,394] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,394] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,402] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,402] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,404] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,404] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,425] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,425] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,427] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,427] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,452] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,452] [django.server::log_message::161] [INFO] "GET /api/storages/export?project=5 HTTP/1.1" 200 665
+[2024-10-20 03:10:55,453] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,453] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 631
+[2024-10-20 03:10:55,480] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,480] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,482] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,482] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,488] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,488] [django.server::log_message::161] [INFO] "GET /api/storages/export/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,490] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:10:55,490] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:19:17,780] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:19:17,780] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:19:17,823] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 03:19:17,823] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 03:19:21,642] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 03:19:21,642] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 03:20:54,097] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:20:54,097] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:20:54,120] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 03:20:54,120] [django.server::log_message::161] [INFO] "GET /api/storages/s3/form HTTP/1.1" 200 1627
+[2024-10-20 03:20:56,178] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:20:56,178] [django.server::log_message::161] [INFO] "GET /api/current-user/whoami HTTP/1.1" 200 225
+[2024-10-20 03:20:56,205] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 03:20:56,205] [django.server::log_message::161] [INFO] "GET /api/storages/localfiles/form HTTP/1.1" 200 583
+[2024-10-20 03:20:58,484] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 03:20:58,484] [django.server::log_message::161] [INFO] "POST /api/storages/localfiles/validate HTTP/1.1" 200 0
+[2024-10-20 03:20:59,233] [django.server::log_message::161] [INFO] "PATCH /api/storages/localfiles/1?project=5 HTTP/1.1" 200 610
+[2024-10-20 03:20:59,233] [django.server::log_message::161] [INFO] "PATCH /api/storages/localfiles/1?project=5 HTTP/1.1" 200 610
+[2024-10-20 03:20:59,259] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 632
+[2024-10-20 03:20:59,259] [django.server::log_message::161] [INFO] "GET /api/storages?project=5 HTTP/1.1" 200 632
+[2024-10-20 03:20:59,269] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 03:20:59,269] [django.server::log_message::161] [INFO] "GET /api/storages/types HTTP/1.1" 200 198
+[2024-10-20 04:40:46,308] [django.server::log_message::161] [INFO] "GET / HTTP/1.1" 302 0
+[2024-10-20 04:40:46,308] [django.server::log_message::161] [INFO] "GET / HTTP/1.1" 302 0
+[2024-10-20 04:40:46,370] [django.server::log_message::161] [INFO] "GET /user/login/ HTTP/1.1" 200 5580
+[2024-10-20 04:40:46,370] [django.server::log_message::161] [INFO] "GET /user/login/ HTTP/1.1" 200 5580
+[2024-10-20 04:40:46,386] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,386] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,392] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 304 0
+[2024-10-20 04:40:46,392] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 304 0
+[2024-10-20 04:40:46,396] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,396] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,400] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 304 0
+[2024-10-20 04:40:46,400] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,400] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 304 0
+[2024-10-20 04:40:46,400] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,401] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 304 0
+[2024-10-20 04:40:46,401] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 304 0
+[2024-10-20 04:40:46,402] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,402] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 304 0
+[2024-10-20 04:40:46,408] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,408] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,412] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,412] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,412] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,412] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 304 0
+[2024-10-20 04:40:46,427] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 04:40:46,427] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 04:40:46,430] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 04:40:46,430] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 04:40:46,432] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 200 366
+[2024-10-20 04:40:46,432] [django.server::log_message::161] [INFO] "GET /static/css/fonts.hellix.ad84997f14b9.css HTTP/1.1" 200 366
+[2024-10-20 04:40:46,433] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 200 6123
+[2024-10-20 04:40:46,433] [django.server::log_message::161] [INFO] "GET /static/css/login.631a64478927.css HTTP/1.1" 200 6123
+[2024-10-20 04:40:46,437] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 200 9254
+[2024-10-20 04:40:46,437] [django.server::log_message::161] [INFO] "GET /static/icons/logo-black.64a55656e13e.svg HTTP/1.1" 200 9254
+[2024-10-20 04:40:46,439] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 200 5248
+[2024-10-20 04:40:46,439] [django.server::log_message::161] [INFO] "GET /static/images/human_signal_logo.97adf6f9a70c.svg HTTP/1.1" 200 5248
+[2024-10-20 04:40:46,466] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 200 51972
+[2024-10-20 04:40:46,466] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-Regular.ce7e7fc9354f.woff HTTP/1.1" 200 51972
+[2024-10-20 04:40:46,470] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 200 39408
+[2024-10-20 04:40:46,470] [django.server::log_message::161] [INFO] "GET /static/images/heidi-tip.2e3228516929.svg HTTP/1.1" 200 39408
+[2024-10-20 04:40:46,473] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 200 529
+[2024-10-20 04:40:46,473] [django.server::log_message::161] [INFO] "GET /static/images/login-bg.2c7fadf7bd88.svg HTTP/1.1" 200 529
+[2024-10-20 04:40:46,498] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 200 52680
+[2024-10-20 04:40:46,498] [django.server::log_message::161] [INFO] "GET /static/fonts/Hellix-SemiBold.656fff162b3b.woff HTTP/1.1" 200 52680
+[2024-10-20 04:40:47,348] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 04:40:47,348] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 04:40:54,010] [django.server::log_message::161] [INFO] "POST /user/login/?next=/projects/ HTTP/1.1" 302 0
+[2024-10-20 04:40:54,010] [django.server::log_message::161] [INFO] "POST /user/login/?next=/projects/ HTTP/1.1" 302 0
+[2024-10-20 04:40:54,126] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 04:40:54,126] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 04:40:54,151] [django.server::log_message::161] [INFO] "GET /static/css/uikit.bee6fc38db3d.css HTTP/1.1" 200 3868
+[2024-10-20 04:40:54,151] [django.server::log_message::161] [INFO] "GET /static/css/uikit.bee6fc38db3d.css HTTP/1.1" 200 3868
+[2024-10-20 04:40:54,158] [django.server::log_message::161] [INFO] "GET /static/fonts/roboto/roboto.css HTTP/1.1" 200 3431
+[2024-10-20 04:40:54,158] [django.server::log_message::161] [INFO] "GET /static/fonts/roboto/roboto.css HTTP/1.1" 200 3431
+[2024-10-20 04:40:54,159] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 04:40:54,159] [django.server::log_message::161] [INFO] "GET /static/css/main.cf908d032736.css HTTP/1.1" 200 15892
+[2024-10-20 04:40:54,159] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 04:40:54,159] [django.server::log_message::161] [INFO] "GET /react-app/main.css?v=d9b816 HTTP/1.1" 200 87929
+[2024-10-20 04:40:54,171] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 04:40:54,171] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 04:40:54,176] [django.server::log_message::161] [INFO] "GET /static/css/Toast.min.0479912dd9c5.css HTTP/1.1" 200 1213
+[2024-10-20 04:40:54,176] [django.server::log_message::161] [INFO] "GET /static/css/Toast.min.0479912dd9c5.css HTTP/1.1" 200 1213
+[2024-10-20 04:40:54,176] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 04:40:54,176] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 04:40:54,178] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 04:40:54,178] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 04:40:54,182] [django.server::log_message::161] [INFO] "GET /react-app/main.js?v=d9b816 HTTP/1.1" 200 1257211
+[2024-10-20 04:40:54,182] [django.server::log_message::161] [INFO] "GET /react-app/main.js?v=d9b816 HTTP/1.1" 200 1257211
+[2024-10-20 04:40:54,931] [django.server::log_message::161] [INFO] "GET /static/icons/logo.svg HTTP/1.1" 200 9254
+[2024-10-20 04:40:54,931] [django.server::log_message::161] [INFO] "GET /static/icons/logo.svg HTTP/1.1" 200 9254
+[2024-10-20 04:40:54,946] [django.server::log_message::161] [INFO] "GET /api/version HTTP/1.1" 200 880
+[2024-10-20 04:40:54,946] [django.server::log_message::161] [INFO] "GET /api/version HTTP/1.1" 200 880
+[2024-10-20 04:40:54,952] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 04:40:54,952] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 04:40:54,953] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 04:40:54,953] [django.server::log_message::161] [INFO] "GET /sw.js HTTP/1.1" 200 6086
+[2024-10-20 04:40:54,954] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 04:40:54,954] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 04:40:54,954] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 04:40:54,954] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 04:40:54,966] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 04:40:54,966] [django.server::log_message::161] [INFO] "GET /projects/ HTTP/1.1" 200 30664
+[2024-10-20 04:40:54,977] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 04:40:54,977] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 04:40:56,959] [django.server::log_message::161] [INFO] "GET /dm/main.css?v=d9b816 HTTP/1.1" 200 76923
+[2024-10-20 04:40:56,959] [django.server::log_message::161] [INFO] "GET /dm/main.css?v=d9b816 HTTP/1.1" 200 76923
+[2024-10-20 04:40:56,963] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 04:40:56,963] [django.server::log_message::161] [INFO] "GET /api/projects/5 HTTP/1.1" 200 2896
+[2024-10-20 04:40:56,971] [django.server::log_message::161] [INFO] "GET /dm/main.js?v=d9b816 HTTP/1.1" 200 1628584
+[2024-10-20 04:40:56,971] [django.server::log_message::161] [INFO] "GET /dm/main.js?v=d9b816 HTTP/1.1" 200 1628584
+[2024-10-20 04:40:56,975] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.css?v=d9b816 HTTP/1.1" 200 2013014
+[2024-10-20 04:40:56,975] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.css?v=d9b816 HTTP/1.1" 200 2013014
+[2024-10-20 04:40:56,978] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.js?v=d9b816 HTTP/1.1" 200 3718612
+[2024-10-20 04:40:56,978] [django.server::log_message::161] [INFO] "GET /label-studio-frontend/main.js?v=d9b816 HTTP/1.1" 200 3718612
+[2024-10-20 04:40:57,095] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 04:40:57,095] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-SemiBold.ttf HTTP/1.1" 200 40852
+[2024-10-20 04:40:57,095] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 04:40:57,095] [django.server::log_message::161] [INFO] "GET /static/fonts/Figtree-Regular.ttf HTTP/1.1" 200 40584
+[2024-10-20 04:40:57,228] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 04:40:57,228] [django.server::log_message::161] [INFO] "GET /api/ml?project=5 HTTP/1.1" 200 2
+[2024-10-20 04:40:57,242] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 04:40:57,242] [django.server::log_message::161] [INFO] "GET /api/dm/columns?project=5 HTTP/1.1" 200 4241
+[2024-10-20 04:40:57,286] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 04:40:57,286] [django.server::log_message::161] [INFO] "GET /api/dm/views?project=5 HTTP/1.1" 200 975
+[2024-10-20 04:40:57,291] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 04:40:57,291] [django.server::log_message::161] [INFO] "GET /api/dm/project?project=5 HTTP/1.1" 200 3080
+[2024-10-20 04:40:57,291] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 04:40:57,291] [django.server::log_message::161] [INFO] "GET /api/users?project=5 HTTP/1.1" 200 460
+[2024-10-20 04:40:57,298] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 04:40:57,298] [django.server::log_message::161] [INFO] "GET /api/dm/actions?project=5 HTTP/1.1" 200 2079
+[2024-10-20 04:40:57,328] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 04:40:57,328] [django.server::log_message::161] [INFO] "GET /api/tasks?page=1&page_size=30&view=5&project=5 HTTP/1.1" 200 7323
+[2024-10-20 04:40:59,781] [django.server::log_message::161] [INFO] "GET /projects/?page=1 HTTP/1.1" 200 30664
+[2024-10-20 04:40:59,781] [django.server::log_message::161] [INFO] "GET /projects/?page=1 HTTP/1.1" 200 30664
+[2024-10-20 04:40:59,796] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 04:40:59,796] [django.server::log_message::161] [INFO] "GET /api/projects?page=1&page_size=30&include=id%2Ctitle%2Ccreated_by%2Ccreated_at%2Ccolor%2Cis_published%2Cassignment_settings HTTP/1.1" 200 476
+[2024-10-20 04:40:59,812] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 04:40:59,812] [django.server::log_message::161] [INFO] "GET /static/js/jquery.min.e6c2415c0ace.js HTTP/1.1" 200 87462
+[2024-10-20 04:40:59,821] [django.server::log_message::161] [INFO] "GET /projects/?tab=5 HTTP/1.1" 200 30664
+[2024-10-20 04:40:59,821] [django.server::log_message::161] [INFO] "GET /projects/?tab=5 HTTP/1.1" 200 30664
+[2024-10-20 04:40:59,832] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 04:40:59,832] [django.server::log_message::161] [INFO] "GET /api/projects?ids=5%2C2&include=id%2Cdescription%2Cnum_tasks_with_annotations%2Ctask_number%2Cskipped_annotations_number%2Ctotal_annotations_number%2Ctotal_predictions_number%2Cground_truth_number%2Cfinished_task_number&page_size=30 HTTP/1.1" 200 476
+[2024-10-20 04:40:59,837] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 04:40:59,837] [django.server::log_message::161] [INFO] "GET /static/js/helpers.f7452c3c8dbf.js HTTP/1.1" 200 5517
+[2024-10-20 04:40:59,933] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
+[2024-10-20 04:40:59,933] [django.server::log_message::161] [INFO] "GET /static/js/Toast.min.9135be1633df.js HTTP/1.1" 200 2371
