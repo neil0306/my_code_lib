@@ -138,5 +138,30 @@ ps -ef | grep label-studio | grep -v grep | awk '{print $2}' | xargs kill -9
   - 这些设置项的具体说明参考这个链接：https://labelstud.io/guide/storage.html#Source-storage-permissions
 
 
+## 使用 ML 模块半自动化打标签
+这个功能要求安装`label-studio-ml-backend`模块
+- 仓库地址：https://github.com/HumanSignal/label-studio-ml-backend?tab=readme-ov-file#models
+
+### 安装 label-studio-ml-backend
+下载并配置仓库
+```shell
+git clone https://github.com/HumanSignal/label-studio-ml-backend.git
+cd label-studio-ml-backend/
+pip install -e .
+```
+
+如果直接使用仓库中自带的模型，则直接创建模型后端：
+```shell
+label-studio-ml create my_ml_backend
+```
+- 后续步骤这里先不写了，因为写笔记的时候不会这么直接用，要用再更新。
+
+### 使用 ultralytic 的 YOLO
+同样是先安装好`label-studio-ml-backend` 以及 `label-studio`.
+- 值得一提的是，这个仓库有提供 yolo 模型的基本框架，并且是基于`Ultralytics`的 YOLO, 这很方便。
+
+
+- [ ] TODO: 搜一下 customize yolo, 有个参数可以配置，看一看 
+  - 官方文档：https://labelstud.io/tutorials/yolo
 
 
