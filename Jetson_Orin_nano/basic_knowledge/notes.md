@@ -144,12 +144,6 @@ sudo -H pip3 install setuptools==58.3.0
 sudo -H pip3 install Cython
 
 
-# --------- cuda related ----------
-sudo apt install -y cuda-command-line-tools-10-2 cuda-compiler-10-2 cuda-cuobjdump-10-2 cuda-cupti-10-2 cuda-cupti-dev-10-2 \
-  cuda-gdb-10-2 cuda-libraries-10-2 cuda-libraries-dev-10-2 cuda-memcheck-10-2 cuda-nvdisasm-10-2 cuda-nvgraph-10-2 cuda-nvgraph-dev-10-2 cuda-nvml-dev-10-2 \
-  cuda-nvprof-10-2 cuda-nvprune-10-2 cuda-nvtx-10-2 cuda-tools-10-2
-sudo apt install libcurand-10-2 libcurand-dev-10-2 libcusolver-10-2 libcusolver-dev-10-2 libcusparse-10-2 libcusparse-dev-10-2 -y
-
 sudo pip3 install pycocotools       # COCO 数据集的 Python API
 
 sudo apt install figlet             # 生成 ASCII 艺术文本的工具
