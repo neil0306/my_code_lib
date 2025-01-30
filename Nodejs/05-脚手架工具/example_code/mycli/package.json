@@ -10,5 +10,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
 }

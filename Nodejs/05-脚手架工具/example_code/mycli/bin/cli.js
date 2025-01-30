@@ -7,8 +7,17 @@
 // console.log(process.argv);     // 打印捕获参数的所有信息
 
 
-if (process.argv[2] == '--help'){
-    console.log("参数捕获成功");
-}
+// if (process.argv[2] == '--help'){
+//     console.log("参数捕获成功");
+// }
+
+
+// ----------------- 用 commander 处理命令行参数 --------------
+const {program} = require('commander');
+program.option('-f, --framework <framework>', '设置框架');  // 修改 --help 里的提示信息
+program.parse(process.argv);
+
+
+
 
 
