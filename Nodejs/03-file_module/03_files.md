@@ -114,6 +114,67 @@ console.log(vv);        // 使用导入时修改过的变量名
 
 ---
 
+## CommonJS Module 的使用
+
+查看 commonjs 的 module 信息：
+```js
+console.log(module);  // 打印 module 对象提供的所有方法
+
+//----------------- 在 mac 的终端中得到以下输出 --------------
+{
+  id: '.',
+  path: '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/03-file_module/example_code/commonjs_code',
+  exports: {},    // 对模块进行导出时，其实就是给这个属性赋值
+  filename: '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/03-file_module/example_code/commonjs_code/m1.js',
+  loaded: false,
+  children: [],
+  paths: [
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/03-file_module/example_code/commonjs_code/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/03-file_module/example_code/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/03-file_module/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/Nodejs/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/my_code_lib/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/My-Git-Repo/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/GitHub/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/com~apple~CloudDocs/node_modules',
+    '/Users/nullptr/Library/Mobile Documents/node_modules',
+    '/Users/nullptr/Library/node_modules',
+    '/Users/nullptr/node_modules',
+    '/Users/node_modules',
+    '/node_modules'
+  ],
+  [Symbol(kIsMainSymbol)]: true,
+  [Symbol(kIsCachedByESMLoader)]: false,
+  [Symbol(kURL)]: undefined,
+  [Symbol(kFormat)]: undefined,
+  [Symbol(kIsExecuting)]: true
+}
+```
+- 可以看到，module 这个对象里有一个`exports`属性，我们在进行模块的导出的时其实就是在给这个属性赋值。
+
+导出变量的例子：
+```js
+// console.log(module);  // 打印 module 这个对象的所有属性
 
 
+var val = "this is commonjs";
+var foo = 'foo';
+
+// 导出变量 - 写法 1:
+module.exports.val = val;
+module.exports.foo = foo;
+
+// 导出变量 - 写法 2:
+module.exports = {val, foo}
+
+// 导出变量 - 写法 3:
+exports.foo = foo;  
+exports.val = val;
+```
+
+导入变量的例子：
+```js
+var m1 = require('./m1.js');
+console.log(m1);
+```
 
