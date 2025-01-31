@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "commander": "^13.1.0",
-    "inquirer": "^12.3.3"
+    "inquirer": "^12.3.3",
+    "simple-git": "^3.27.0"
   }
 }
