@@ -1,6 +1,7 @@
 
 var download = require('simple-git');
 const ora = require('ora');
+const chalk = require('chalk');
 
 const downloadFn = function(url, projectName){
     const spinner = ora().start();
@@ -13,10 +14,10 @@ const downloadFn = function(url, projectName){
             return;
         }
         spinner.succeed('Repository cloned successfully');
-        console.log("Done! \nYou can run: ");
-        console.log('\tcd ' + projectName);
-        console.log('\tnpm install ');
-        console.log('\tnpm run dev ');
+        console.log(chalk.green("Done! \nYou can run: "));
+        console.log(chalk.blue.bold('\tcd ' + projectName));
+        console.log(chalk.yellow.bold('\tnpm install '));
+        console.log(chalk.rgb(123,234,66).bold('\tnpm run dev '));
         
     });
 }
