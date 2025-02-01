@@ -249,3 +249,100 @@ server.on('request', function(req, res){   // 用 on 方法监听客户端的请
         }
     })
     ```
+
+### 拆分代码
+为了使得代码更加规范，方便维护，这里将`http-server/server.js`中的代码拆分成多个模块：
+- `http-server/server.js`: 服务器的入口文件
+    ```js
+    var http = require('http');
+    var server = http.createServer();
+
+    var router = require('./router')    // 路由模块, 所有的请求都会经过这里
+
+    server.listen(8080, function(){
+        console.log('http://127.0.0.1:8080')
+    })
+
+    server.on('request', function(req, res){
+        router(req, res);
+    })
+    ```
+
+- `http-server/router.js`: 负责引导客户端的不同的请求到不同的处理逻辑
+    ```js
+    var url = require('url');
+    var fs = require('fs'); 
+    var controller = require("./controller")   // 具体业务逻辑写在这里
+
+    module.exports = (req, res)=>{
+        if (req.method == 'GET'){
+            // console.log(url.parse(req.url,true).query.id)
+            if (req.url == '/'){
+                controller.index(res);
+            }
+            else{
+                fs.readFile('./neil.jpeg', function(err, data){  
+                    res.end(data);         
+                })
+            }
+        }
+        else if (req.method == 'POST'){
+            var data = ''                   
+            req.on('data', function(d){    
+                data += d;           
+            })
+            
+            req.on('end', function(){       
+                controller.user(require('querystring').parse(data), res);
+            })
+        }
+    }
+    ```
+
+- `http-server/contrller.js`: 负责处理不同的请求的具体业务逻辑
+    ```js
+    var fs = require('fs'); 
+
+    module.exports = {
+        index(res){
+            fs.readFile('./index.html', 'utf-8', function(err, data){
+                res.write(data);
+                res.end();
+            })
+        },
+
+        user(postData, res){
+            // 业务逻辑代码
+            console.log(postData); 
+        }
+    }
+    ```
+
+- `http-server/index.html`: 客户端的页面
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>
+            你好啊
+        </h1>
+        <img src="./neil.jpeg" alt="">
+        <form action="./" method="post">
+            <input type="test" name="username"> <br>
+            <input type="text" name="age">
+            <input type="submit" value="post 提交">
+        </form>
+    </body>
+    </html>
+    ```
+
+
+
+
+
+
