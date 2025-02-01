@@ -23,15 +23,28 @@ const app = express();
 const { promisify } = require('util');             // 借助 promisify 使用 async/await 来避免回调地狱
 const readFile = promisify(fs.readFile);           // 使用 promisify 将 fs.readFile 变成 promise 流程
 
-app.get('/', async function(req, res){             // 使用 async/await 异步操作，避免回调函数嵌套
-    try{
+app.use(express.urlencoded());                       // 用 express 提供的 urlencoded() 方法来表明服务端可以处理 urlencoded 这种类型的数据
+app.use(express.json());                             // 增加可处理的数据格式
+
+app.get('/', async function (req, res) {             // 使用 async/await 异步操作，避免回调函数嵌套
+    try {
         let back = await readFile('./db.json', 'utf-8');          // 这个 readFile 是 promise 的，也就是在异步处理的过程中，必须等待 readFile 执行结束才会继续往下执行
         const jsonObj = JSON.parse(back).users;
         res.send(jsonObj);
     }
-    catch(err){
+    catch (err) {
         res.status(500).json(err);
     }
+})
+
+
+app.post('/', async function (req, res) {
+    console.log(req.headers);   // 打印客户端请求的所有 head 信息，从中可以知道客户端发送过来的数据是什么格式类型
+                                // 如果我们测试的时候用的是 "x-www-form-urlencoded", 那么打印信息中我们会看到 'content-type': 'application/x-www-form-urlencoded',
+                                //  根据这个信息，我们需要 app 初始化之后添加 app.use(express.urlencoded()) 来表明服务器需要处理这个格式的数据
+                                //  如果需要处理更多格式，则继续增加其他格式的声明，比如 json 格式 app.use(express.json())
+
+    console.log(req.body);      // express 提供的 body 方法可以直接拿到客户端发过来的所有请求数据
 })
 
 // 由于 express 本质上只是对 http 这个核心模块进行了扩展，所以类似监听这种操作还是需要手动完成的
