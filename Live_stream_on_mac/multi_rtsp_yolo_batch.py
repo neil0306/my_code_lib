@@ -10,6 +10,8 @@ import threading
 import time
 import argparse
 import sys
+import subprocess
+import shlex
 from queue import Queue, Empty
 from collections import defaultdict
 from typing import List, Dict, Tuple, Optional
@@ -44,7 +46,7 @@ def set_logging_level(level: str):
 class RTSPStreamHandler:
     """单个 RTSP 流处理器"""
     
-    def __init__(self, stream_id: int, rtsp_url: str, target_size: Tuple[int, int] = (640, 480)):
+    def __init__(self, stream_id: int, rtsp_url: str, target_size: Tuple[int, int] = (640, 640)):
         self.stream_id = stream_id
         self.rtsp_url = rtsp_url
         self.target_size = target_size  # (width, height)
@@ -54,6 +56,9 @@ class RTSPStreamHandler:
         self.last_frame_time = 0
         self.reconnect_attempts = 0
         self.max_reconnect_attempts = 5
+        
+        # ffmpeg 进程
+        self.ffmpeg_process = None
         
         # 捕获帧统计（用于内部监控）
         self.captured_frame_count = 0
@@ -79,6 +84,7 @@ class RTSPStreamHandler:
     def stop(self):
         """停止流捕获"""
         self.running = False
+        self._cleanup_ffmpeg()
         
     def get_frame(self) -> Optional[np.ndarray]:
         """获取最新帧"""
@@ -133,44 +139,33 @@ class RTSPStreamHandler:
         }
             
     def _capture_frames(self):
-        """帧捕获线程"""
-        cap = None
-        
+        """帧捕获线程 - 使用 ffmpeg"""
         while self.running:
             try:
-                if cap is None or not cap.isOpened():
-                    # 尝试连接 RTSP 流
-                    logger.info(f"Stream {self.stream_id}: 尝试连接 {self.rtsp_url}")
-                    cap = cv2.VideoCapture(self.rtsp_url)
-                    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)  # 减少缓冲延迟
+                if self.ffmpeg_process is None or self.ffmpeg_process.poll() is not None:
+                    # 启动 ffmpeg 进程
+                    self._start_ffmpeg_process()
                     
-                    if cap.isOpened():
-                        self.connected = True
-                        self.reconnect_attempts = 0
-                        logger.info(f"Stream {self.stream_id}: 连接成功")
-                    else:
-                        self.connected = False
-                        self.reconnect_attempts += 1
-                        if self.reconnect_attempts <= self.max_reconnect_attempts:
-                            logger.warning(f"Stream {self.stream_id}: 连接失败，{self.reconnect_attempts}/{self.max_reconnect_attempts}")
-                            time.sleep(2)  # 等待后重试
-                            continue
-                        else:
-                            logger.error(f"Stream {self.stream_id}: 超过最大重连次数，跳过此流")
-                            break
-                
-                ret, frame = cap.read()
-                if not ret:
-                    logger.warning(f"Stream {self.stream_id}: 读取帧失败，尝试重连")
-                    self.connected = False
-                    cap.release()
-                    cap = None
+                if not self.connected:
                     time.sleep(1)
                     continue
                 
-                # 调整帧大小
-                if frame.shape[:2] != (self.target_size[1], self.target_size[0]):
-                    frame = cv2.resize(frame, self.target_size)
+                # 读取一帧数据 (640*640*3 bytes)
+                frame_size = self.target_size[0] * self.target_size[1] * 3
+                raw_data = self.ffmpeg_process.stdout.read(frame_size)
+                
+                if len(raw_data) != frame_size:
+                    logger.warning(f"Stream {self.stream_id}: 读取数据不完整，预期 {frame_size} 字节，实际 {len(raw_data)} 字节")
+                    self._restart_ffmpeg()
+                    continue
+                
+                # 将原始数据转换为 numpy 数组
+                try:
+                    frame = np.frombuffer(raw_data, dtype=np.uint8)
+                    frame = frame.reshape((self.target_size[1], self.target_size[0], 3))
+                except Exception as e:
+                    logger.warning(f"Stream {self.stream_id}: 帧数据转换失败：{e}")
+                    continue
                 
                 # 验证帧有效性
                 if not self._validate_captured_frame(frame):
@@ -200,17 +195,97 @@ class RTSPStreamHandler:
                     
             except Exception as e:
                 logger.error(f"Stream {self.stream_id}: 捕获错误 {e}")
-                self.connected = False
-                if cap:
-                    cap.release()
-                cap = None
+                self._restart_ffmpeg()
                 time.sleep(1)
                 
         # 清理资源
-        if cap:
-            cap.release()
+        self._cleanup_ffmpeg()
         logger.info(f"Stream {self.stream_id}: 捕获线程结束")
     
+    def _start_ffmpeg_process(self):
+        """启动 ffmpeg 进程"""
+        try:
+            logger.info(f"Stream {self.stream_id}: 启动 ffmpeg 连接 {self.rtsp_url}")
+            
+            # 构建 ffmpeg 命令
+            # cmd = [
+            #     'ffmpeg',
+            #     '-hwaccel', 'auto',   # hardware acceleration
+            #     '-i', self.rtsp_url,
+            #     '-vf', f'scale={self.target_size[0]}:{self.target_size[1]}:flags=fast_bilinear',  # 在 ffmpeg 中 resize
+            #     '-f', 'rawvideo',
+            #     '-r', '20',
+            #     '-tune', 'zerolatency',
+            #     '-preset', 'ultrafast',
+            #     '-threads', '0',
+            #     '-pix_fmt', 'bgr24',
+            #     '-an',  # 禁用音频
+            #     '-sn',  # 禁用字幕
+            #     '-'     # 输出到 stdout
+            # ]
+            
+            cmd = [
+                'ffmpeg',
+                '-hwaccel', 'auto',   # hardware acceleration
+                '-i', self.rtsp_url,
+                '-vf', f'scale={self.target_size[0]}:{self.target_size[1]}:flags=fast_bilinear',  # 在 ffmpeg 中 resize
+                '-f', 'rawvideo',
+                '-r', '20',
+                '-threads', '0',
+                '-pix_fmt', 'bgr24',
+                '-an',  # 禁用音频
+                '-sn',  # 禁用字幕
+                '-'     # 输出到 stdout
+            ]
+            
+            # 启动进程
+            self.ffmpeg_process = subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.DEVNULL,  # 忽略错误输出以减少日志噪音
+                bufsize=self.target_size[0] * self.target_size[1] * 3  # 设置缓冲区大小为一帧
+            )
+            
+            # 检查进程是否成功启动
+            time.sleep(0.5)  # 给 ffmpeg 一点时间启动
+            if self.ffmpeg_process.poll() is None:
+                self.connected = True
+                self.reconnect_attempts = 0
+                logger.info(f"Stream {self.stream_id}: ffmpeg 连接成功")
+            else:
+                raise Exception("ffmpeg 进程启动后立即退出")
+                
+        except Exception as e:
+            logger.error(f"Stream {self.stream_id}: ffmpeg 启动失败：{e}")
+            self.connected = False
+            self.reconnect_attempts += 1
+            
+            if self.reconnect_attempts <= self.max_reconnect_attempts:
+                logger.warning(f"Stream {self.stream_id}: 连接失败，{self.reconnect_attempts}/{self.max_reconnect_attempts}")
+            else:
+                logger.error(f"Stream {self.stream_id}: 超过最大重连次数")
+            
+            self._cleanup_ffmpeg()
+    
+    def _restart_ffmpeg(self):
+        """重启 ffmpeg 进程"""
+        self.connected = False
+        self._cleanup_ffmpeg()
+        
+    def _cleanup_ffmpeg(self):
+        """清理 ffmpeg 进程"""
+        if self.ffmpeg_process:
+            try:
+                self.ffmpeg_process.terminate()
+                self.ffmpeg_process.wait(timeout=3)
+            except:
+                try:
+                    self.ffmpeg_process.kill()
+                except:
+                    pass
+            finally:
+                self.ffmpeg_process = None
+
     def _validate_captured_frame(self, frame: np.ndarray) -> bool:
         """验证捕获的帧是否有效"""
         try:
@@ -399,16 +474,19 @@ class MultiStreamYOLOProcessor:
             if stream_id in self.streams:
                 self.streams[stream_id].mark_frame_processed()
             
-            # 获取流的 YOLO 处理 FPS
+            # 获取流的 YOLO 处理 FPS 和捕获 FPS
             processing_fps = self.streams[stream_id].get_processing_fps() if stream_id in self.streams else 0.0
+            capture_fps = self.streams[stream_id].get_capture_fps() if stream_id in self.streams else 0.0
             
-            # 添加流信息和统计 - 显示 YOLO 处理 FPS
+            # 添加流信息和统计 - 显示 YOLO 处理 FPS 和捕获 FPS
             cv2.putText(annotated_frame, f"Stream {stream_id}", 
                       (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
             cv2.putText(annotated_frame, f"Objects: {detection_count}", 
                         (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
             cv2.putText(annotated_frame, f"YOLO FPS: {processing_fps:.1f}", 
                         (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+            cv2.putText(annotated_frame, f"Capture FPS: {capture_fps:.1f}", 
+                        (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
             
             return stream_id, annotated_frame, detection_count
             
@@ -483,7 +561,7 @@ class MultiStreamYOLOProcessor:
                         for stream_id, annotated_frame, detection_count in processing_results:
                             # 添加推理时间信息 - 调整位置
                             cv2.putText(annotated_frame, f"Inference: {inference_time*1000:.1f}ms", 
-                                        (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+                                        (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
                             
                             self.processed_frames[stream_id] = annotated_frame
                                 
@@ -534,10 +612,11 @@ class MultiStreamYOLOProcessor:
                     if stream_id in self.streams:
                         self.streams[stream_id].mark_frame_processed()
                     
-                    # 获取流的 YOLO 处理 FPS
+                    # 获取流的 YOLO 处理 FPS 和捕获 FPS
                     processing_fps = self.streams[stream_id].get_processing_fps() if stream_id in self.streams else 0.0
+                    capture_fps = self.streams[stream_id].get_capture_fps() if stream_id in self.streams else 0.0
                     
-                    # 添加流信息 - 显示 YOLO 处理 FPS
+                    # 添加流信息 - 显示 YOLO 处理 FPS 和捕获 FPS
                     cv2.putText(display_frame, f"Stream {stream_id}", 
                               (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
                     
@@ -550,9 +629,13 @@ class MultiStreamYOLOProcessor:
                     cv2.putText(display_frame, f"YOLO FPS: {processing_fps:.1f}", 
                                 (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
                     
+                    # 添加捕获 FPS 信息
+                    cv2.putText(display_frame, f"Capture FPS: {capture_fps:.1f}", 
+                                (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
+                    
                     # 添加处理时间
                     cv2.putText(display_frame, f"Process: {inference_time*1000:.1f}ms", 
-                                (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+                                (10, 150), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
                     
                     self.processed_frames[stream_id] = display_frame
                     
@@ -829,7 +912,7 @@ def main():
     parser.add_argument('--batch-size', type=int, default=6, 
                        help='Maximum batch size for YOLO inference (default: 4)')
     parser.add_argument('--width', type=int, default=640, help='Frame width (default: 640)')
-    parser.add_argument('--height', type=int, default=480, help='Frame height (default: 480)')
+    parser.add_argument('--height', type=int, default=640, help='Frame height (default: 640)')
     parser.add_argument('--confidence', type=float, default=0.5, 
                        help='Confidence threshold (default: 0.5)')
     parser.add_argument('--grid-cols', type=int, default=2, 
