@@ -2,6 +2,8 @@
 
 所有课件: https://github.com/stanford-cs336/spring2025-lectures
 
+视频: https://www.youtube.com/watch?v=SQ3fZ1sAqXI&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_
+
 * L1: introduce
 * L2: basic transformer concept, Triton, model training
 * L3: Scaling law 
