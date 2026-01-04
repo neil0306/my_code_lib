@@ -24,6 +24,7 @@
 - A4: 
 - A5: implement supervised fine-tuning, implement DPO, implement GRPO
 
+![](L1_learning_notes_images/assignments.png)
 
 
 ---
