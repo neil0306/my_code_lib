@@ -55,5 +55,8 @@
         "typeinfo": "cpp",
         "variant": "cpp"
     },
-    "CodeGPT.apiKey": "Groq"
+    "CodeGPT.apiKey": "Groq",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": []
 }
