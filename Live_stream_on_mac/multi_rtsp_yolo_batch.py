@@ -226,7 +226,7 @@ class RTSPStreamHandler:
             
             cmd = [
                 'ffmpeg',
-                '-hwaccel', 'auto',   # hardware acceleration
+                '-hwaccel', 'videotoolbox',   # hardware acceleration
                 '-i', self.rtsp_url,
                 '-vf', f'scale={self.target_size[0]}:{self.target_size[1]}:flags=fast_bilinear',  # 在 ffmpeg 中 resize
                 '-f', 'rawvideo',
@@ -905,11 +905,11 @@ class MultiStreamDisplay:
 def main():
     parser = argparse.ArgumentParser(description='Multi-RTSP YOLO Batch Processing')
     parser.add_argument('--rtsp-urls', type=str, nargs='+', 
-                       default=["rtsp://admin:Password01@192.168.1.65:554/Streaming/Channels/1/?transportmode=unicast","rtsp://admin:Password01@192.168.1.64:554/Streaming/Channels/1/?transportmode=unicast"],
+                       default=["rtsp://admin:Password01@192.168.1.64:554/Streaming/Channels/1/?transportmode=unicast"],
                        help='RTSP stream URLs (可以重复使用同一个 URL 进行测试)')
     parser.add_argument('--model', type=str, default='model_weights/YOLO11M_100_re.mlpackage', 
                        help='YOLO model path (default: model_weights/YOLO11M_100_re.mlpackage)')
-    parser.add_argument('--batch-size', type=int, default=6, 
+    parser.add_argument('--batch-size', type=int, default=12, 
                        help='Maximum batch size for YOLO inference (default: 4)')
     parser.add_argument('--width', type=int, default=640, help='Frame width (default: 640)')
     parser.add_argument('--height', type=int, default=640, help='Frame height (default: 640)')
@@ -964,7 +964,7 @@ def main():
         if len(args.rtsp_urls) == 1:
             logger.info("使用单个 RTSP URL 创建多个测试流")
             base_url = args.rtsp_urls[0]
-            for i in range(1, args.batch_size):
+            for i in range(1, 6):
                 processor.add_stream(i, base_url)
     
     # 启动所有流
