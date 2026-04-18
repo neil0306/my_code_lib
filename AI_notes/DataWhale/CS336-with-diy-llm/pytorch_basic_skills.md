@@ -340,6 +340,43 @@ z = einsum(x, y, "... seq1 hidden, ... seq2 hidden -> ... seq1 seq2")
 
 `...` 表示“任意数量的前导维度”，比如可能是 (device, batch) 或 (ensemble, batch, time)，代码依然适用。好处是维度逻辑显式、通用、不易出错，且天然支持广播。
 
+**与自动微分（计算图）：** `einops.einsum` 作用在 PyTorch 张量上时，会通过底层调用（等价思路与 `torch.einsum` 一类算子一致）执行可微的张量运算。只要参与运算的张量需要梯度（如 `requires_grad=True`），这些运算就会像普通 `matmul`、`sum` 一样接入 **autograd**：前向建图、`backward()` 时能反传。**einops 本身不负责「单独开关」构图**——是否记录梯度，与普通 PyTorch 约定相同。
+
+**与连续性（contiguous）：** `y.transpose(-2, -1)` **一般仍是视图**：与 `y` **共享存储**，但通过交换 stride 得到，结果常常 **`is_contiguous()==False`**。随后的 `x @ (...)` 得到的是**新分配的结果张量** `z`，在典型实现里 **`z` 默认是连续的**——这与是否先写了显式转置无关，因为矩阵乘输出本来就是新缓冲区。
+
+用 **einsum 一路写完收缩**时，同样也是算出**全新的 `z`**，通常 **`z` 同样是连续存储**；**不会被「前面的转置是非连续的」牵连**，因为 **`z` 是新张量**。需要区分两点：
+
+- **输出 `z`：** `einsum` / `@` 的结果一般都是新tensor，多半连续。
+- **输入 `x`、`y`：** `einsum` **不会**为了运算自动把输入改成 `contiguous()`（除非底层 kernel 内部做了拷贝优化，那是实现细节）；只是不需要你先**单独**构造一个「转置中间变量」来表达同一数学含义。
+
+下面用纯 `torch`（与上文形状一致）做一次核对：`transpose` 视图 vs `matmul` / `torch.einsum` 结果的连续性。**布尔结果与设备（CPU/CUDA）无关**；下列打印为一次典型运行示例（PyTorch 2.2）。
+
+```python
+import torch
+
+x = torch.ones(2, 3, 4)
+y = torch.ones(2, 3, 4)
+yt = y.transpose(-2, -1)
+
+print("y.is_contiguous():", y.is_contiguous())
+print("y.transpose(-2,-1).is_contiguous():", yt.is_contiguous())
+
+z_mm = x @ yt
+z_ein = torch.einsum("bsh,bth->bst", x, y)
+
+print("(x @ yt).is_contiguous():", z_mm.is_contiguous())
+print("torch.einsum(...).is_contiguous():", z_ein.is_contiguous())
+print("numerically equal:", torch.allclose(z_mm, z_ein))
+```
+
+```text
+y.is_contiguous(): True
+y.transpose(-2,-1).is_contiguous(): False
+(x @ yt).is_contiguous(): True
+torch.einsum(...).is_contiguous(): True
+numerically equal: True
+```
+
 #### 3. 用 einops.reduce 替代 mean(dim=...)
 
 ```
@@ -356,6 +393,12 @@ y = reduce(x, "... hidden -> ...", "mean")
 
 从 `... hidden` 变成 `...`，说明 hidden 维度被“聚合”了，聚合方式是 `"mean"`（也可用 `"sum"`, `"max"` 等）。
 同样`...` 表示“任意数量的前导维度”。这种写法的好处是明确表达了“我打算把哪个维度压缩掉”，语义清晰。
+
+在此基础上，常有读者追问两件事：**这里的 `reduce(..., "mean")` 和普通 `mean(dim=...)` 在计算上是不是一回事？**以及 **自动微分里这一行到底记了什么——是不是只对“被平均”的那部分建图，其它权重在这步反传里完全收不到梯度？** 简要说明如下。
+
+第一，**与 `torch.mean` 的关系。** 在上面的形状约定下（沿最后一维 `hidden` 做算术平均），`reduce(x, "... hidden -> ...", "mean")` 与 `x.mean(dim=-1)` **前向上一致**：都是对最后一维求平均。若把 `"mean"` 换成 `"sum"`、`"max"` 等，则分别变成求和、取最大等别的归约，就不再与 `mean` 等价。
+
+第二，**与计算图、反向传播。** `mean` 在可微实现中等价于 **沿该维求和再除以长度 $N$**（或数值上等价的 fused 实现）。PyTorch 在 `y` 上记录的是「**从输入张量 `x` 到输出 `y` 的这一次归约**」；示例里的 `x` 多数是**激活值**，不一定是 `nn.Parameter` 本身。反向时，梯度会回到 **参与该组平均的每一个 `x` 元素**：对每组内被平均的 $N$ 个分量，大致有 $\partial L/\partial x$ 与 $\partial L/\partial y$ 通过 **因子 $1/N$** 相联系（与「先加后除」的链式法则一致）。**未被这一行用到的参数**之所以没有梯度，是因为它们**不在从 loss 连到当前 `y` 的计算路径上**，属于图的连通性问题，而不是 `mean`「故意跳过」某些权重——任何其它层运算也是同样道理：只有祖先节点会从该边收到反传信号。
 
 #### 4. 用 einops.rearrange 拆分/合并维度
 
@@ -390,7 +433,15 @@ x = einsum(x, w, "... hidden1, hidden1 hidden2 -> ... hidden2")
 x = rearrange(x, "... heads hidden2 -> ... (heads hidden2)")
 ```
 
-尽管Einops增加了少量语法开销，但其清晰的维度命名显著降低了调试难度，特别是在复杂的模型架构中，更多用法可见 [Einops tutorial](https://einops.rocks/1-einops-basics/)。
+**对计算图（autograd）的影响：** 上述流水线是 **「reshape 类 rearrange → 可微的 einsum 收缩 → 再一次 rearrange」**，在 PyTorch 里都会落成普通张量运算连成的子图。
+
+- **`rearrange`：** 底层通常是 `view` / `reshape` / `permute` 等组合（必要时可能触发 `contiguous()` 拷贝）。这些算子对参与梯度的张量**可微**，**不会**像 `.detach()` 那样切断计算图；反向时把 $\partial L/\partial(\text{输出})$ 按元素顺序与 stride 规则映射回 $\partial L/\partial(\text{输入})$。
+- **中间的 `einsum(x, w, ...)`：** 与原生 `torch.einsum` 类似，对 `x`、`w` 各自有标准反传规则（例如对 `w` 而言仍是一次线性收缩相关的梯度）。
+- **整体：** 三步串在一起后，从 loss 反传会依次穿过「合并后的 rearrange → einsum → 拆分时的 rearrange」，只要对应张量 `requires_grad=True`（且 `w` 为参数），梯度会流到**整条链路上的祖先**。维度重排本身**不改变「有哪些参数连到 loss」**，只改变中间张量的形状与张量并行组织方式。
+
+因此：Einops 在这里主要是**写法与维度安全**，并**不**引入特殊的「图语义」；训练时与普通 PyTorch 手工 `reshape + matmul/einsum` 在自动微分意义上等价（具体是否多一次拷贝取决于底层是否 `contiguous`，与图是否断开无关）。
+
+尽管 Einops 增加了少量语法开销，但其清晰的维度命名显著降低了调试难度，特别是在复杂的模型架构中，更多用法可见 [Einops tutorial](https://einops.rocks/1-einops-basics/)。
 
 ## 3.3 内存（Memory）
 
