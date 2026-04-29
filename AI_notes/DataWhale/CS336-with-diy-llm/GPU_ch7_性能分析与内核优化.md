@@ -38,6 +38,12 @@ def benchmark(description: str, run: Callable, num_warmups: int = 1, num_trials:
     return mean(times)
 ```
 
+**常见误用 -> 正确写法**
+- 误用：省略 `torch.cuda.synchronize()` 直接计时。
+  正确：计时窗口前后都同步，测真实 GPU 执行时间。
+- 误用：只测 1 次就下结论。
+  正确：至少 warmup + 多次 trial，报告均值/方差。
+
 ### 直觉解释
 
 - 不预热：把冷启动当成稳态性能；
@@ -91,6 +97,12 @@ def profile(description: str, run: Callable, num_warmups: int = 1, with_stack: b
     return table
 ```
 
+**常见误用 -> 正确写法**
+- 误用：只开 `CPU` activity，误判瓶颈。
+  正确：同时开 `CPU + CUDA`，交叉看调度与内核时间。
+- 误用：profiling 期间不做同步。
+  正确：退出 profiler 前同步，避免漏记异步 kernel。
+
 这段代码的意义是把“端到端慢”拆解成“谁在耗时”。常见观察点：
 
 - `aten::xxx` 时间高：上层算子热；
@@ -126,6 +138,12 @@ def run_mlp(dim: int, num_layers: int, batch_size: int, num_steps: int) -> Calla
     return run
 ```
 
+**常见误用 -> 正确写法**
+- 误用：忘记 `zero_grad` 却拿长期结果对比。
+  正确：若做长循环基准，显式 `zero_grad(set_to_none=True)`。
+- 误用：把数据构造放到 `run()` 里。
+  正确：把固定输入放外面，只测训练路径本身。
+
 这个代码块的意义是：把“真实训练路径（前向 + 反向）”放进 benchmark，而不是只测单个算子。
 
 **idea**
@@ -148,6 +166,12 @@ add_profile = profile("add", run_operation2(dim=2048, operation=lambda a, b: a +
 matmul_profile = profile("matmul", run_operation2(dim=2048, operation=lambda a, b: a @ b))
 cdist_profile = profile("cdist", run_operation2(dim=2048, operation=lambda a, b: torch.cdist(a, b)))
 ```
+
+**常见误用 -> 正确写法**
+- 误用：不同算子用不同输入尺寸比较。
+  正确：固定 shape 和 dtype，仅改变算子类型。
+- 误用：小尺寸直接外推到大模型场景。
+  正确：覆盖多档尺寸，观察曲线再定优化策略。
 
 原文这组代码强调：同一个 profiling 框架可横向比较不同算子，便于定位“谁是真热点”。
 
@@ -188,6 +212,12 @@ def manual_gelu(x: torch.Tensor):
     return 0.5 * x * (1 + torch.tanh(0.79788456 * (x + 0.044715 * x * x * x)))
 ```
 
+**常见误用 -> 正确写法**
+- 误用：只比输出相等，不看性能路径。
+  正确：`check_equal` 后必须配合 profiler/benchmark。
+- 误用：默认 `gelu` 近似方式不同。
+  正确：显式设置 `approximate="tanh"` 再做公平对比。
+
 两者数值可非常接近，但执行路径不同。  
 优化时要优先看 profiler，而不是只看公式形式。
 
@@ -202,6 +232,12 @@ def run_operation1(dim: int, operation: Callable) -> Callable:
 manual_time = benchmark("manual_gelu", run_operation1(dim=16384, operation=manual_gelu))
 pytorch_time = benchmark("pytorch_gelu", run_operation1(dim=16384, operation=pytorch_gelu))
 ```
+
+**常见误用 -> 正确写法**
+- 误用：只测小矩阵得出“手写一样快”。
+  正确：用接近实战的大尺寸才暴露访存差异。
+- 误用：不同 dtype 混测。
+  正确：统一 dtype 后再比较时间。
 
 这段对应原文“为什么手写慢”的实证部分：不是凭感觉，而是大尺寸下直接测耗时差。
 
@@ -235,6 +271,12 @@ __global__ void gelu_kernel(float* in, float* out, int num_elements) {
     }
 }
 ```
+
+**常见误用 -> 正确写法**
+- 误用：不做 `i < num_elements` 边界判断。
+  正确：始终用 mask/bounds check 防越界。
+- 误用：把 host 指针当 device 指针传入。
+  正确：调用前确认 tensor 在 CUDA 且 contiguous。
 
 ### 6.2 包装函数要点
 
@@ -274,6 +316,12 @@ def create_cuda_gelu():
     # 返回 Python 可调用句柄
     return getattr(module, "gelu")
 ```
+
+**常见误用 -> 正确写法**
+- 误用：每次运行都重新编译 extension。
+  正确：固定 `name/build_directory` 复用编译缓存。
+- 误用：忘记 CPU 回退逻辑。
+  正确：`torch.cuda.is_available()` 为假时返回 `None` 或 fallback。
 
 这个块对应“从内核代码到 Python 可调用函数”的桥接步骤，是手写 CUDA 实战里最容易缺失的一环。
 
@@ -328,6 +376,12 @@ def triton_gelu_kernel(x_ptr, y_ptr, num_elements, BLOCK_SIZE: tl.constexpr):
     tl.store(y_ptr + offsets, y, mask=mask)
 ```
 
+**常见误用 -> 正确写法**
+- 误用：省略 `mask`，尾块越界访问。
+  正确：尾块统一走 `mask` 保护读写。
+- 误用：`BLOCK_SIZE` 随意设置。
+  正确：结合 occupancy 与寄存器压力做 sweep。
+
 关键点：
 
 - `tl.arange` 本质是块内向量化索引；
@@ -352,6 +406,12 @@ def triton_gelu_kernel(x_ptr, y_ptr, num_elements, BLOCK_SIZE: tl.constexpr):
 compiled_gelu = torch.compile(manual_gelu)
 ```
 
+**常见误用 -> 正确写法**
+- 误用：把首次编译时间算进稳态吞吐。
+  正确：分开统计 cold-start 与 steady-state。
+- 误用：动态 shape 太多还期待稳定收益。
+  正确：优先在 shape 相对稳定场景验证。
+
 常见收益来源：
 
 - 自动融合若干逐元素算子；
@@ -364,6 +424,12 @@ compiled_gelu = torch.compile(manual_gelu)
 compiled_gelu = torch.compile(manual_gelu)
 check_equal(compiled_gelu, manual_gelu)
 ```
+
+**常见误用 -> 正确写法**
+- 误用：编译后直接替换线上路径。
+  正确：先做 `check_equal`，再灰度比性能。
+- 误用：只测均值。
+  正确：同时记录 p95/p99，防止抖动掩盖问题。
 
 这段是原文里的关键实践点：先验正确性，再谈性能收益。
 

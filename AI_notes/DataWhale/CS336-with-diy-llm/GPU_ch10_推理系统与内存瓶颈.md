@@ -94,6 +94,12 @@ def generate_kv_readable(prefix, max_len=10, min_len=3):
         ids.append(next_id)
 ```
 
+**常见误用 -> 正确写法**
+- 误用：把教学版 `np.vstack` 当生产实现。
+  正确：生产使用预分配或 paged KV，避免频繁重分配。
+- 误用：不固定采样策略就比较速度。
+  正确：固定 greedy/top-k/top-p 后再测延迟吞吐。
+
 这段代码不是高性能实现，但非常直观地揭示了 KV cache 的“累计增长 + 重复读取”模式。
 
 ```python
@@ -150,6 +156,12 @@ def arithmetic_intensity(B, D, F, bytes_per_elem=2):
     return flops / bytes_transferred
 ```
 
+**常见误用 -> 正确写法**
+- 误用：把该 AI 公式当精确性能预测器。
+  正确：把它当方向判断工具，再用 profiler 验证。
+- 误用：忽略 dtype 导致 bytes 估计错误。
+  正确：按 FP16/BF16/FP8 等真实字节数代入。
+
 ### 直觉
 
 增大 batch 时，`W` 可被同批样本复用，固定读权重成本被分摊，`I` 提升，吞吐改善。
@@ -166,6 +178,12 @@ def h100_intensity():
     memory_bandwidth = 3.35e12    # HBM 峰值带宽（示例取值）
     return flops_per_second / memory_bandwidth
 ```
+
+**常见误用 -> 正确写法**
+- 误用：直接套厂商峰值作结论。
+  正确：峰值只作上界，结合实测 effective bandwidth。
+- 误用：跨硬件复用同一临界值。
+  正确：每个硬件代际单独计算临界 AI。
 
 用途：用“任务算术强度 vs 硬件临界值”快速判断 compute-bound 还是 memory-bound。
 
@@ -185,6 +203,12 @@ if __name__ == "__main__":
         ai_test = arithmetic_intensity(B_test, D, F)
         print(f"B={B_test:4d} -> AI={ai_test:.2f}")
 ```
+
+**常见误用 -> 正确写法**
+- 误用：离线吞吐最优 batch 直接搬到线上。
+  正确：结合 TTFT/SLA 约束选可用 batch。
+- 误用：只看平均 token latency。
+  正确：同时看 p95/p99 与队列等待时间。
 
 这段补全了原文“batch 增大 -> 算术强度提升”的可执行验证逻辑。
 
@@ -260,6 +284,12 @@ for i in range(L):
     y_i = (qi.T @ S) / (qi.T @ Z)
     Y_correct.append(y_i.flatten())
 ```
+
+**常见误用 -> 正确写法**
+- 误用：线性注意力一次性用全局 KV。
+  正确：自回归必须按前缀递推，严格因果。
+- 误用：分母不加稳定项。
+  正确：在 `qi.T @ Z` 处加 `eps` 防数值爆炸。
 
 这个对照是关键知识点：  
 线性注意力做自回归生成时，必须按前缀递推，不能一次性混入全序列信息。

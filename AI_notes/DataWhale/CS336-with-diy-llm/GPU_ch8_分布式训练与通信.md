@@ -66,6 +66,12 @@ def collective_operations_main(rank: int, world_size: int):
     cleanup()
 ```
 
+**常见误用 -> 正确写法**
+- 误用：不同 rank 进入不同 collective 顺序。
+  正确：所有 rank 严格同序调用 collective。
+- 误用：测试后不 `destroy_process_group`。
+  正确：完成后 `cleanup()`，避免残留状态影响下一轮。
+
 这段代码直接展示了：  
 `all-reduce` 的结果可以由 `reduce-scatter + all-gather` 组合复现。
 
@@ -200,6 +206,12 @@ def all_reduce(rank: int, world_size: int, num_elements: int):
     return bandwidth
 ```
 
+**常见误用 -> 正确写法**
+- 误用：只 `barrier` 不 `cuda.synchronize()`。
+  正确：两者都要，前者对齐 rank，后者等待本地 GPU 完成。
+- 误用：混用带宽公式口径。
+  正确：在文档里固定并声明同一口径。
+
 这里的核心解释：
 
 - `2 * (world_size - 1)` 体现“发送 + 接收”；
@@ -241,6 +253,12 @@ def reduce_scatter(rank: int, world_size: int, num_elements: int):
     return bandwidth
 ```
 
+**常见误用 -> 正确写法**
+- 误用：拿 reduce-scatter 和 all-reduce 的带宽数值直接横比。
+  正确：先统一通信体量定义再比较趋势。
+- 误用：忽略 `world_size` 对算法路径的影响。
+  正确：至少在多档 world size 下采样曲线。
+
 这段对应原文里 all-reduce 与 reduce-scatter 的对照基准：  
 前者常近似“收 + 发双向代价”，后者通信体量口径不同，不能直接按同一系数套公式。
 
@@ -259,6 +277,12 @@ for param in params:
     # DDP 核心：反向后做梯度全归约
     dist.all_reduce(tensor=param.grad, op=dist.ReduceOp.AVG, async_op=False)
 ```
+
+**常见误用 -> 正确写法**
+- 误用：前向阶段就 all-reduce 参数梯度。
+  正确：反向拿到梯度后再同步。
+- 误用：`SUM` 后不调学习率。
+  正确：明确 `SUM/AVG` 策略并联动 lr。
 
 相对于单机训练，这行同步梯度是数据并行最关键的行为差异。
 
@@ -287,6 +311,12 @@ def data_parallelism_main(rank: int, world_size: int, data: torch.Tensor, num_la
     cleanup()
 ```
 
+**常见误用 -> 正确写法**
+- 误用：遗漏 `zero_grad` 导致隐式梯度累积。
+  正确：每 step 前清梯度，除非你刻意做 accumulation。
+- 误用：`batch_size` 不能整除 `world_size` 仍硬切。
+  正确：处理余数或用 sampler 保证每 rank 数据一致。
+
 这块补全了原文最核心的 DDP 训练骨架：本地前反向 + 梯度同步 + 参数更新。
 
 **工程注意**
@@ -302,6 +332,12 @@ dist.all_gather(tensor_list=activations, tensor=x, async_op=False)
 # 沿特征维拼接回完整激活
 x = torch.cat(activations, dim=1)
 ```
+
+**常见误用 -> 正确写法**
+- 误用：all-gather 后维度拼接错位。
+  正确：明确切分维度并验证拼接后 shape。
+- 误用：把 TP 放到跨机低带宽链路。
+  正确：TP 优先放节点内高速互联。
 
 张量并行每层常需显式通信激活，这也是其带宽成本高的根源。
 
@@ -325,6 +361,12 @@ def tensor_parallelism_main(rank: int, world_size: int, data: torch.Tensor, num_
     cleanup()
 ```
 
+**常见误用 -> 正确写法**
+- 误用：`num_dim % world_size != 0` 直接整除切分。
+  正确：先保证可整除或使用不等分切分策略。
+- 误用：忽略每层通信重排成本。
+  正确：记录 all-gather 占比，必要时配合 fusion/recompute。
+
 这段补全了原文里 TP 的关键机制：每层都要把局部激活聚合回全维表示。
 
 **idea**
@@ -345,6 +387,12 @@ if rank + 1 < world_size:
     # 发送到下游 stage
     dist.send(tensor=x, dst=rank + 1)
 ```
+
+**常见误用 -> 正确写法**
+- 误用：send/recv 配对不一致。
+  正确：上下游严格配对，必要时先加 debug barrier 验证。
+- 误用：激活 tensor shape 在 stage 间不一致。
+  正确：约定统一 shape 协议并断言检查。
 
 流水线并行是阶段间点对点传递激活，调度质量直接影响 bubble 大小。
 
@@ -375,6 +423,12 @@ def pipeline_parallelism_main(rank: int, world_size: int, data: torch.Tensor, nu
             dist.send(tensor=x, dst=rank + 1)
     cleanup()
 ```
+
+**常见误用 -> 正确写法**
+- 误用：micro-batch 太少，流水线长期空泡。
+  正确：通过 sweep 找到吞吐/显存折中点。
+- 误用：stage 切分不均衡。
+  正确：按实际层耗时切分，而不是按层数平均切。
 
 这段补全了原文 PP 代码块的主干流程：分阶段、分微批、点对点传激活。
 
